@@ -2,17 +2,15 @@ extends CharacterBody2D
 
 @export var MaxHealth : float = 100
 var health : float
-@export var speed = 400
+var dying = false
 
 func _ready():
 	health = MaxHealth
-	
-func _physics_process(delta: float):
-	var input_direction : Vector2 = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
-	move_and_slide()
 
 func take_damage(damage):
+	if dying:
+		return
+		
 	health -= damage
 	if health < 0:
 		die()
@@ -20,4 +18,9 @@ func take_damage(damage):
 		$DamageAnimation.play("Damage")
 
 func die():
+	dying = true
+	$SpawnPoint.queue_free()
+	$DamageAnimation.play("Death")
+
+func remove():
 	queue_free()
