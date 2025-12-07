@@ -22,6 +22,7 @@ Spawning="*res://addons/BulletUpHell/Spawning.tscn"
 [global_group]
 
 Player=""
+Background=""
 
 [input]
 

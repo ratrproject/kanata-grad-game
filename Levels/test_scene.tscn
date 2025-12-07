@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btvpt5y00p63s"]
+[gd_scene load_steps=26 format=3 uid="uid://btvpt5y00p63s"]
 
 [ext_resource type="PackedScene" uid="uid://dmwljje80jms1" path="res://Scenes/player.tscn" id="1_u6qdh"]
 [ext_resource type="Script" uid="uid://b7tgmign3yhgb" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_dfwtf"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" uid="uid://ltnfm11t8qch" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="7_qflrp"]
 [ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/enemy.tscn" id="7_qps05"]
 [ext_resource type="Script" uid="uid://cbjww5awy6nur" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="8_4u7n5"]
-[ext_resource type="Texture2D" uid="uid://bv45w7avij11l" path="res://Sprites/background.png" id="9_va1gj"]
-[ext_resource type="PackedScene" path="res://Scenes/sprite_2d.tscn" id="10_fp8br"]
+[ext_resource type="Script" uid="uid://ce7q84xreo6pe" path="res://Scripts/WorldMap.gd" id="9_fp8br"]
+[ext_resource type="Script" uid="uid://drffii8cq5yfy" path="res://Scripts/WorldTile.gd" id="10_b8uvj"]
+[ext_resource type="PackedScene" uid="uid://wu4y28kb2oe1" path="res://Scenes/sprite_2d.tscn" id="10_fp8br"]
+[ext_resource type="Script" uid="uid://buwkud8ujut73" path="res://Levels/WorldEnd.gd" id="12_qflrp"]
 
 [sub_resource type="Curve2D" id="Curve2D_tcdvl"]
 
@@ -186,6 +188,20 @@ r_scale_multi_curve_choice = []
 r_scale_multi_iter_variation = Vector3(0, 0, 0)
 r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
+[sub_resource type="Gradient" id="Gradient_mrgoi"]
+colors = PackedColorArray(0.0255245, 0.290793, 0.470944, 1, 0.568627, 0.878431, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b8uvj"]
+gradient = SubResource("Gradient_mrgoi")
+width = 2000
+height = 1080
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8uvj"]
+size = Vector2(2000, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qflrp"]
+size = Vector2(124, 707)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_u6qdh")]
@@ -224,12 +240,69 @@ props = SubResource("PackedDataContainer_fp8br")
 [node name="Enemy" parent="." instance=ExtResource("7_qps05")]
 position = Vector2(860, 418)
 
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.78431374, 0.78431374, 0.78431374, 1)
-z_index = -100
-position = Vector2(635, 518)
-texture = ExtResource("9_va1gj")
+[node name="Enemy2" parent="." instance=ExtResource("7_qps05")]
+position = Vector2(558, 88)
 
-[node name="Sprite2D" parent="." instance=ExtResource("10_fp8br")]
-position = Vector2(1092.0001, -439)
+[node name="Enemy3" parent="." instance=ExtResource("7_qps05")]
+position = Vector2(991, 164)
+
+[node name="Enemy4" parent="." instance=ExtResource("7_qps05")]
+position = Vector2(388, 547)
+
+[node name="Background" type="Node2D" parent="." groups=["Background"]]
+position = Vector2(628, 314)
+script = ExtResource("9_fp8br")
+
+[node name="Area2D" type="Area2D" parent="Background"]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("10_b8uvj")
+
+[node name="Sprite2D" parent="Background/Area2D" instance=ExtResource("10_fp8br")]
+rotation = 0.0
+scale = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_b8uvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D"]
+shape = SubResource("RectangleShape2D_b8uvj")
+
+[node name="Area2D2" type="Area2D" parent="Background"]
+position = Vector2(2000, 0)
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("10_b8uvj")
+
+[node name="Sprite2D" parent="Background/Area2D2" instance=ExtResource("10_fp8br")]
+rotation = 0.0
+scale = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_b8uvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D2"]
+shape = SubResource("RectangleShape2D_b8uvj")
+
+[node name="Area2D3" type="Area2D" parent="Background"]
+position = Vector2(4000, 0)
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("10_b8uvj")
+
+[node name="Sprite2D" parent="Background/Area2D3" instance=ExtResource("10_fp8br")]
+rotation = 0.0
+scale = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_b8uvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D3"]
+shape = SubResource("RectangleShape2D_b8uvj")
+
+[node name="EndOfLine" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 256
+script = ExtResource("12_qflrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndOfLine"]
+position = Vector2(-274, 325)
+shape = SubResource("RectangleShape2D_qflrp")
+
+[connection signal="area_entered" from="Background/Area2D" to="Background/Area2D" method="_on_tile_area_entered"]
+[connection signal="area_entered" from="Background/Area2D2" to="Background/Area2D2" method="_on_tile_area_entered"]
+[connection signal="area_entered" from="Background/Area2D3" to="Background/Area2D3" method="_on_tile_area_entered"]
