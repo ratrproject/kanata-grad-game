@@ -4,17 +4,22 @@ var tilemap = []
 @export var tileWidth = 2000
 @export var ScrollSpeed = 100
 
+var stopped = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for j in self.get_children().size(): 
+	for j in $Background.get_children().size(): 
 		tilemap.append([])
-		var tile = self.get_children()[j]
+		var tile = $Background.get_children()[j]
 		if tile.script.resource_path == 'res://Scripts/WorldTile.gd':
 			tile.id = j
 			tilemap[j] = tile
 
 func _process(delta):
-	position -= Vector2(ScrollSpeed * delta, 0)
+	$Background.position -= Vector2(ScrollSpeed * delta, 0)
+
+	if !stopped:
+		$Checkpoints.position -= Vector2(ScrollSpeed * delta, 0)	
 
 func _shift_grid(new_tile):
 	var v = new_tile.id
@@ -31,3 +36,9 @@ func _shift_grid(new_tile):
 
 	for j in tilemap.size():
 		tilemap[j].id = j
+
+func hit_checkpoint():
+	stopped = true
+	
+func cleared_checkpoint():
+	stopped = false
