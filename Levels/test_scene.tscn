@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://btvpt5y00p63s"]
+[gd_scene load_steps=31 format=3 uid="uid://btvpt5y00p63s"]
 
 [ext_resource type="PackedScene" uid="uid://dmwljje80jms1" path="res://Scenes/player.tscn" id="1_u6qdh"]
 [ext_resource type="Script" uid="uid://b7tgmign3yhgb" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_dfwtf"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://wu4y28kb2oe1" path="res://Scenes/sprite_2d.tscn" id="10_fp8br"]
 [ext_resource type="Script" uid="uid://b17stwfq4t7bp" path="res://Scripts/Checkpoint.gd" id="11_4u7n5"]
 [ext_resource type="Script" uid="uid://buwkud8ujut73" path="res://Levels/WorldEnd.gd" id="12_qflrp"]
+[ext_resource type="Script" uid="uid://d2s48qrjl0ye3" path="res://Scripts/State/PathState.gd" id="13_tcdvl"]
 
 [sub_resource type="Curve2D" id="Curve2D_tcdvl"]
 
@@ -203,13 +204,28 @@ size = Vector2(2000, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u7n5"]
 size = Vector2(20, 1000)
 
+[sub_resource type="Curve2D" id="Curve2D_77kmq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 988, 834, 0, 0, 0, 0, 720, 571)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_4u7n5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 727, 577, 0, 0, 0, 0, 860, 393, 0, 0, 0, 0, 551, 157, 0, 0, 0, 0, 403, 435, 0, 0, 0, 0, 536, 686)
+}
+point_count = 5
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qflrp"]
 size = Vector2(124, 707)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_u6qdh")]
-position = Vector2(99, 322)
+position = Vector2(187, 324)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 
 [node name="Patterns" type="Node2D" parent="."]
 
@@ -242,10 +258,11 @@ id = "2"
 props = SubResource("PackedDataContainer_fp8br")
 
 [node name="WorldMap" type="Node2D" parent="." groups=["Background"]]
-position = Vector2(628, 314)
+position = Vector2(576, 324)
 script = ExtResource("9_fp8br")
 
 [node name="Background" type="Node2D" parent="WorldMap"]
+position = Vector2(17, 216)
 
 [node name="Area2D" type="Area2D" parent="WorldMap/Background"]
 collision_layer = 256
@@ -304,16 +321,38 @@ shape = SubResource("RectangleShape2D_4u7n5")
 [node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint"]
 
 [node name="Enemy" parent="WorldMap/Checkpoints/Checkpoint/Enemies" instance=ExtResource("7_qps05")]
-position = Vector2(678, 117)
+position = Vector2(1252, 371)
 
 [node name="Enemy2" parent="WorldMap/Checkpoints/Checkpoint/Enemies" instance=ExtResource("7_qps05")]
-position = Vector2(376, -213)
+position = Vector2(1041, -377)
 
 [node name="Enemy3" parent="WorldMap/Checkpoints/Checkpoint/Enemies" instance=ExtResource("7_qps05")]
-position = Vector2(809, -137)
+position = Vector2(1278, -143)
 
 [node name="Enemy4" parent="WorldMap/Checkpoints/Checkpoint/Enemies" instance=ExtResource("7_qps05")]
-position = Vector2(206, 246)
+position = Vector2(977, 833)
+States = [NodePath("../../Paths/EnemyState/State"), NodePath("../../Paths/EnemyState/State2")]
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint"]
+
+[node name="EnemyState" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths"]
+
+[node name="State" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/EnemyState"]
+script = ExtResource("13_tcdvl")
+move_speed = 300
+patrol_path = NodePath("Path2D2")
+
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/EnemyState/State"]
+curve = SubResource("Curve2D_77kmq")
+
+[node name="State2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/EnemyState"]
+script = ExtResource("13_tcdvl")
+move_speed = 120
+patrol_path = NodePath("Path2D")
+loop = true
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/EnemyState/State2"]
+curve = SubResource("Curve2D_4u7n5")
 
 [node name="Checkpoint2" type="Node2D" parent="WorldMap/Checkpoints"]
 position = Vector2(247, -2)
@@ -339,7 +378,7 @@ position = Vector2(565, -148)
 position = Vector2(371, 143)
 
 [node name="EndOfLine" type="Area2D" parent="."]
-position = Vector2(191, 0)
+position = Vector2(212, 16)
 collision_layer = 512
 collision_mask = 256
 script = ExtResource("12_qflrp")
