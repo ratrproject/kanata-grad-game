@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7d1i25b3khwr"]
+
+[ext_resource type="Script" uid="uid://dhbi1s2g4syk" path="res://Scripts/UI/Settings.gd" id="1_pvtps"]
+
+[node name="Settings" type="VBoxContainer"]
+offset_right = 1122.0
+offset_bottom = 440.0
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+script = ExtResource("1_pvtps")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="FullscreenLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Full Screen"
+
+[node name="FullScreenCheck" type="CheckBox" parent="GridContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../SFXSlider")
+button_pressed = true
+flat = true
+
+[node name="SFXLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../FullScreenCheck")
+focus_neighbor_bottom = NodePath("../MusicSlider")
+step = 10.0
+
+[node name="MusicLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SFXSlider")
+step = 10.0
+
+[node name="VoiceLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Voices"
+
+[node name="VoiceSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SFXSlider")
+step = 10.0
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Settings/LanguageDropdown")
+focus_neighbor_bottom = NodePath("../Button2")
+theme_override_font_sizes/font_size = 48
+text = "Back"
+
+[connection signal="toggled" from="GridContainer/FullScreenCheck" to="." method="_on_full_screen_on_toggled"]
+[connection signal="value_changed" from="GridContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="GridContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="value_changed" from="GridContainer/VoiceSlider" to="." method="_on_voice_slider_drag_ended"]
+[connection signal="pressed" from="BackButton" to="." method="_on_button_pressed"]

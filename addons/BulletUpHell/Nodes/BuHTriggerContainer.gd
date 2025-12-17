@@ -38,7 +38,7 @@ func define_trigger(res:Array, t:String, b, rid):
 	var curr_t = Spawning.trigger(id+"/"+t)
 	if not res.has(curr_t.resource_name): res.append(curr_t.resource_name)
 	if curr_t.resource_name == "TrigTime":
-		get_tree().create_timer(curr_t.time).connect("timeout",Callable(Spawning,"trig_timeout").bind(b, rid))
+		get_tree().create_timer(curr_t.time, false).connect("timeout",Callable(Spawning,"trig_timeout").bind(b, rid))
 
 
 func getCurrentTriggers(b, rid):

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj6q1a2jjvrdu"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_6024v"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="2_isx8o"]
+
+[node name="PinkAxolotl" instance=ExtResource("1_6024v")]
+
+[node name="SpawnPoint" type="Node2D" parent="." index="5"]
+rotation = 3.1415927
+script = ExtResource("2_isx8o")
+active = false
+auto_pattern_id = "5"
+shared_area_name = "1"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

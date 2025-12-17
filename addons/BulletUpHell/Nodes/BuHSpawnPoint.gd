@@ -18,6 +18,10 @@ var trig_collider
 var trig_signal
 
 var rotating_speed = 0.0
+var rotating_angle_limit : bool = false
+var rotating_angle : float = 0
+var rotating_angle_default : float = 0
+var rotating_angle_direction : int = 1
 var active:bool = true
 var shared_area_name = "0"
 var shared_area
@@ -49,13 +53,13 @@ func _ready():
 	elif auto_distance_from != NodePath(): set_physics_process(true)
 	elif auto_pattern_id != "":
 		if auto_start_after_time > float(0.0):
-			await get_tree().create_timer(auto_start_after_time).timeout
+			await get_tree().create_timer(auto_start_after_time, false).timeout
 		auto_call = true
 		set_physics_process(active)
 		
 	if active and auto_pattern_id != "":
 		if auto_start_after_time > float(0.0):
-			await get_tree().create_timer(auto_start_after_time).timeout
+			await get_tree().create_timer(auto_start_after_time, false).timeout
 		auto_call = true
 		set_physics_process(active)
 		
@@ -76,7 +80,13 @@ var _delta:float
 func _physics_process(delta):
 	if Engine.is_editor_hint(): return
 	_delta = delta
-	rotate(rotating_speed)
+	rotate(rotating_angle_direction * rotating_speed * delta)
+	if (rotating_angle_limit):
+		if rotating_angle_direction == 1 and rotation > rotating_angle / 2 + rotating_angle_default:
+			rotating_angle_direction = -1
+		elif rotating_angle_direction == -1 and rotation < -rotating_angle / 2 + rotating_angle_default:
+			rotating_angle_direction = 1
+	
 	if trig_container:
 		checkTrigger()
 		return
@@ -92,7 +102,7 @@ func _physics_process(delta):
 
 func on_screen(is_on):
 	if is_on and auto_start_after_time > float(0.0):
-		await get_tree().create_timer(auto_start_after_time).timeout
+		await get_tree().create_timer(auto_start_after_time, false).timeout
 	active = is_on
 	set_physics_process(active)
 
@@ -117,6 +127,14 @@ func checkTrigger():
 func callAction():
 	Spawning.spawn(self, auto_pattern_id, shared_area_name)
 
+func activate():
+	active = true
+	if active and auto_pattern_id != "":
+		if auto_start_after_time > float(0.0):
+			await get_tree().create_timer(auto_start_after_time, false).timeout
+		auto_call = true
+		set_physics_process(active)
+
 func _get_property_list() -> Array:
 	return [
 		{
@@ -135,6 +153,22 @@ func _get_property_list() -> Array:
 			name = "rotating_speed",
 			type = TYPE_FLOAT,
 			usage = PROPERTY_USAGE_DEFAULT
+		},{
+			name = "rotating_angle_limit",
+			type = TYPE_BOOL,
+			usage = PROPERTY_USAGE_DEFAULT
+		},{
+			name = "rotating_angle",
+			type = TYPE_FLOAT,
+			usage = PROPERTY_USAGE_DEFAULT,
+			hint = PROPERTY_HINT_RANGE,
+			hint_string = "-180,180,0.1"
+		},{
+			name = "rotating_angle_default",
+			type = TYPE_FLOAT,
+			usage = PROPERTY_USAGE_DEFAULT,
+			hint = PROPERTY_HINT_RANGE,
+			hint_string = "-180,180,0.1"
 		},{
 			name = "pool_amount",
 			type = TYPE_INT,

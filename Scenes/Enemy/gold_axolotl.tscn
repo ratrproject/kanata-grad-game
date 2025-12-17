@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvvbsvcyite2a"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_7h7p6"]
+[ext_resource type="Texture2D" uid="uid://cmbnm8avup1g1" path="res://Sprites/Axolotl-Gold.png" id="2_oqdtg"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_02x5j"]
+
+[node name="Gold Axolotl" instance=ExtResource("1_7h7p6")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_oqdtg")
+
+[node name="SpawnPoint" type="Node2D" parent="." index="6"]
+rotation = 3.1415927
+script = ExtResource("3_02x5j")
+active = false
+auto_pattern_id = "3"
+shared_area_name = "1"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

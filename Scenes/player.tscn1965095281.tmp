@@ -1,0 +1,229 @@
+[gd_scene load_steps=19 format=3 uid="uid://dmwljje80jms1"]
+
+[ext_resource type="Script" uid="uid://dhq4oqe2v5j4u" path="res://Scripts/Player.gd" id="1_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://7c1rnpsmdwct" path="res://Sprites/kanata.png" id="2_x3wgy"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_fkybt"]
+[ext_resource type="AudioStream" uid="uid://ctuv2sk0csqfw" path="res://SFX/sfx_pc_kanatahit1.ogg" id="4_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://didmrd53wkp3y" path="res://SFX/sfx_pc_kanatahit2.ogg" id="5_3smsa"]
+[ext_resource type="AudioStream" uid="uid://diy2g1uulrs8h" path="res://SFX/sfx_pc_kanatahit3.ogg" id="6_8erm5"]
+[ext_resource type="Texture2D" uid="uid://dhhdcq5vfc10x" path="res://Sprites/cookie-dust.png" id="7_3smsa"]
+
+[sub_resource type="Gradient" id="Gradient_3smsa"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_8erm5"]
+colors = PackedColorArray(0.50893164, 0.7388564, 0.9943175, 1, 1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3wgy"]
+radius = 32.14
+
+[sub_resource type="Animation" id="Animation_rfwce"]
+resource_name = "Damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4x26y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ead2"]
+_data = {
+&"Damage": SubResource("Animation_rfwce"),
+&"RESET": SubResource("Animation_4x26y")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f1ek2"]
+streams_count = 3
+stream_0/stream = ExtResource("4_x3wgy")
+stream_1/stream = ExtResource("5_3smsa")
+stream_2/stream = ExtResource("6_8erm5")
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_3smsa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8erm5"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_die_die"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8erm5"]
+_data = {
+&"Death": SubResource("Animation_8erm5"),
+&"Idle": SubResource("Animation_x3wgy"),
+&"RESET": SubResource("Animation_3smsa")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 4104
+script = ExtResource("1_6t5aa")
+MaxHealth = 104.0
+TPPerShot = 1.25
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-2, 0)
+amount = 30
+texture = ExtResource("7_3smsa")
+lifetime = 0.65
+preprocess = 5.95
+emission_shape = 1
+emission_sphere_radius = 5.33
+direction = Vector2(-1, 0)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 360.0
+initial_velocity_max = 670.0
+scale_amount_min = 0.3
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_3smsa")
+color_initial_ramp = SubResource("Gradient_8erm5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x3wgy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_x3wgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.352747e-22, -0.99999994)
+rotation = 1.5707964
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_x3wgy")
+hframes = 4
+vframes = 3
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(15, 16)
+script = ExtResource("3_fkybt")
+active = false
+auto_pattern_id = "1"
+shared_area_name = "0"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 100
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")
+
+[node name="DamageAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8ead2")
+}
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_f1ek2")
+volume_db = 3.0
+max_distance = 100000.0
+bus = &"SFX"
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="RegenTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8erm5")
+}
+autoplay = "Idle"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="ShotTimer" to="." method="can_fire"]
+[connection signal="timeout" from="RegenTimer" to="." method="can_regen"]

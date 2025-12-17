@@ -1,0 +1,301 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd5y6m0ajxibe"]
+
+[ext_resource type="Script" uid="uid://dp8oj6l3c3dlu" path="res://Scripts/UI/MainMenu.gd" id="1_ttq8b"]
+[ext_resource type="Script" uid="uid://6aadsg02r2xv" path="res://Scenes/LevelSelectButton.gd" id="2_r6jal"]
+[ext_resource type="Script" uid="uid://d3f8ne2q7xbay" path="res://Scenes/LevelDetails.gd" id="3_eit8o"]
+[ext_resource type="PackedScene" uid="uid://c7d1i25b3khwr" path="res://Scenes/settings.tscn" id="3_ixxew"]
+
+[sub_resource type="Gradient" id="Gradient_l778x"]
+colors = PackedColorArray(0.996078, 0.666667, 0.760784, 1, 0.996078, 0.666667, 0.760784, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lftu5"]
+gradient = SubResource("Gradient_l778x")
+width = 820
+height = 470
+
+[sub_resource type="GDScript" id="GDScript_txh7g"]
+script/source = "extends Button
+
+"
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_ttq8b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -3217.0
+offset_top = -3728.0
+offset_right = 4783.0
+offset_bottom = 4272.0
+color = Color(0.0156863, 0.0156863, 0.0156863, 0.392157)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Main" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "PLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../Settings")
+theme_override_font_sizes/font_size = 48
+text = "Level Select"
+
+[node name="Settings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Credits")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="Credits" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+
+[node name="Quit" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Credits")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="LevelSelect" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/LevelSelect"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Level Select"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Level 1"
+script = ExtResource("2_r6jal")
+level_name = "Level 1"
+level = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer" groups=["LevelSelectDisplay"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 2
+script = ExtResource("3_eit8o")
+
+[node name="Label" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Name"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("GradientTexture2D_lftu5")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TextureRect2"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 810.0
+offset_bottom = 460.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label2" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Best Time: "
+horizontal_alignment = 2
+
+[node name="Time" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "--:--"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Continue" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 48
+text = "OK"
+script = SubResource("GDScript_txh7g")
+
+[node name="Button" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Back"
+
+[node name="Setttings" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Setttings"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 44
+
+[node name="Label" type="Label" parent="VBoxContainer/Setttings/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Settings" parent="VBoxContainer/Setttings/VBoxContainer" instance=ExtResource("3_ixxew")]
+layout_mode = 2
+
+[node name="Credits" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Credits"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 36
+
+[node name="Label" type="Label" parent="VBoxContainer/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Credits" type="GridContainer" parent="VBoxContainer/Credits/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Credits" type="Label" parent="VBoxContainer/Credits/VBoxContainer/ScrollContainer/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 28
+text = "Nerd"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Credits2" type="Label" parent="VBoxContainer/Credits/VBoxContainer/ScrollContainer/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 28
+text = "Dennis"
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="VBoxContainer/Credits/VBoxContainer"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 48
+text = "Back"
+
+[node name="BlipSFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = -30.464
+
+[node name="AcceptSFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = -30.464
+
+[node name="BackSFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = -30.464
+
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Start" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/Button" to="." method="_on_level_select_back_pressed"]
+[connection signal="on_back_pressed" from="VBoxContainer/Setttings/VBoxContainer/Settings" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits/VBoxContainer/Back" to="." method="_on_credits_back_pressed"]

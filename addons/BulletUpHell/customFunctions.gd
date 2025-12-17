@@ -13,7 +13,7 @@ func bullet_collide_body(body_rid:RID,body:Node,body_shape_index:int,local_shape
 	## you can use B["props"]["<your custom data name>"] to get the bullet's custom data
 	
 	if body.has_method("take_damage"):
-		body.take_damage(B["props"]["damage"])
+		body.take_damage(B["props"]["damage"],body.global_position - B["position"])
 
 
 func bullet_collide_area(area_rid:RID,area:Area2D,area_shape_index:int,local_shape_index:int,shared_area:Area2D) -> void:

@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg3apmol1g4k2"]
+
+[ext_resource type="Script" uid="uid://d0sjncf72bbgk" path="res://Scripts/UI/Menu.gd" id="1_b4cfn"]
+[ext_resource type="Texture2D" uid="uid://d2hy8kh3ba36q" path="res://Sprites/UI/HP Bar Empty.png" id="2_k4v2d"]
+[ext_resource type="Script" uid="uid://c4q2ju052esu1" path="res://Scripts/UI/UserInterface.gd" id="2_k5w2u"]
+[ext_resource type="Texture2D" uid="uid://0fvltehaiwve" path="res://Sprites/UI/HP Bar Full.png" id="3_k5w2u"]
+[ext_resource type="Texture2D" uid="uid://1o4h8vrj56nq" path="res://Sprites/UI/HP Bar Full Blue.png" id="5_356oj"]
+[ext_resource type="PackedScene" uid="uid://d1fat6bedgrnf" path="res://Scenes/pause_menu.tscn" id="8_yop0g"]
+[ext_resource type="PackedScene" uid="uid://cl48slfx2dgx4" path="res://Scenes/end_menu.tscn" id="9_pri1a"]
+
+[node name="CanvasLayer" type="CanvasLayer" groups=["EnemyDeath"]]
+script = ExtResource("1_b4cfn")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_k5w2u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="HP Container" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HP Container"]
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "HP"
+
+[node name="HP Bar" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/HP Container"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_under = ExtResource("2_k4v2d")
+texture_progress = ExtResource("3_k5w2u")
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/HP Container"]
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TP Container" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/TP Container"]
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "TP"
+
+[node name="TP Bar" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/TP Container"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_under = ExtResource("2_k4v2d")
+texture_progress = ExtResource("5_356oj")
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/TP Container"]
+visible = false
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelTimer" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "00:00"
+vertical_alignment = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_yop0g")]
+visible = false
+
+[node name="EndMenu" parent="." instance=ExtResource("9_pri1a")]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 0.095
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="endFreezeFrame"]

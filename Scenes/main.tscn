@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciqbkoj8faawg"]
+
+[ext_resource type="Script" uid="uid://glr4pcnunibw" path="res://Scripts/main.gd" id="1_s4yg4"]
+[ext_resource type="PackedScene" uid="uid://ey5n4mbo7gap" path="res://Scenes/cursor.tscn" id="2_8gbba"]
+[ext_resource type="AudioStream" uid="uid://bwb4blj64pbhv" path="res://SFX/BGM/Last Resort Euro.wav" id="2_jjvhh"]
+[ext_resource type="AudioStream" uid="uid://bfoj7gti6bm4r" path="res://SFX/BGM/kanata menu theme (fallen wing).mp3" id="2_kry3j"]
+
+[node name="Main" type="Node2D" groups=["Main"]]
+script = ExtResource("1_s4yg4")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Jukebox" type="Node2D" parent="."]
+
+[node name="MenuBGM" type="AudioStreamPlayer2D" parent="Jukebox"]
+process_mode = 3
+stream = ExtResource("2_kry3j")
+volume_db = -9.291
+autoplay = true
+max_distance = 100000.0
+bus = &"Music"
+
+[node name="LevelBGM" type="AudioStreamPlayer2D" parent="Jukebox"]
+process_mode = 3
+stream = ExtResource("2_jjvhh")
+volume_db = -9.291
+max_distance = 100000.0
+bus = &"Music"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+follow_viewport_enabled = true
+
+[node name="Cursor" parent="CanvasLayer" instance=ExtResource("2_8gbba")]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmrpx7wihxyva"]
+
+[ext_resource type="Texture2D" uid="uid://f5wghhyqxn08" path="res://Sprites/clouds.png" id="1_x3g7x"]
+[ext_resource type="Script" uid="uid://cj34odcdfuqye" path="res://Scripts/Cloud.gd" id="2_sixup"]
+
+[node name="Cloud" type="Sprite2D"]
+process_mode = 1
+z_index = -240
+z_as_relative = false
+scale = Vector2(3, 3)
+texture = ExtResource("1_x3g7x")
+vframes = 6
+script = ExtResource("2_sixup")
+minSpeed = 0
+maxSpeed = 60
+minSize = 0.3
+maxSize = 1.4
