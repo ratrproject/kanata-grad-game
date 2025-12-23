@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_n3fw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hd2ra"]
-size = Vector2(91, 116)
+size = Vector2(142, 174.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgcr"]
-size = Vector2(209, 31)
+size = Vector2(393, 77.5)
 
 [sub_resource type="Animation" id="Animation_ipdlf"]
 resource_name = "Damage"
@@ -121,14 +121,16 @@ MaxHealth = 200.0
 Behavior = 2
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-35.5, -4)
+position = Vector2(-28, -48.75)
 shape = SubResource("RectangleShape2D_hd2ra")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(-3.5, 45.5)
+position = Vector2(27, 66.25)
 shape = SubResource("RectangleShape2D_jjgcr")
 
 [node name="Sprite2D" parent="." index="2"]
+position = Vector2(33, -15.5)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_n3fw5")
 vframes = 2
 
@@ -143,6 +145,7 @@ libraries = {
 }
 
 [node name="SpawnPoint" type="Node2D" parent="." index="7"]
+position = Vector2(77, 88)
 rotation = 3.1415927
 script = ExtResource("3_n3fw5")
 active = false
@@ -160,7 +163,8 @@ auto_distance_from = NodePath("")
 trigger_container = NodePath("")
 
 [node name="SpawnPoint2" type="Node2D" parent="." index="8"]
-rotation = 2.6179938
+position = Vector2(-113, 82)
+rotation = 3.1415927
 script = ExtResource("3_n3fw5")
 active = false
 auto_pattern_id = "7"

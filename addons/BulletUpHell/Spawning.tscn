@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gixop20d1d75"]
+[gd_scene load_steps=17 format=3 uid="uid://gixop20d1d75"]
 
 [ext_resource type="Script" uid="uid://d387yy07lnk3p" path="res://addons/BulletUpHell/BuHSpawner.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b6aeteyttjme7" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_3.png" id="2_3slxn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dox6y64b4cha4" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_11.png" id="4_gntuv"]
 [ext_resource type="AudioStream" uid="uid://t8vknxh0wtxj" path="res://addons/BulletUpHell/Bullet/Hit Hurt.wav" id="5_rada6"]
 [ext_resource type="AudioStream" uid="uid://dxfc7wy42m375" path="res://SFX/sfx_pc_kanatashoot.ogg" id="7_paewv"]
+[ext_resource type="AudioStream" uid="uid://cvbmm6ej05ehm" path="res://SFX/sfx_npc_enemyshoot.ogg" id="8_vcv82"]
 
 [sub_resource type="Resource" id="Resource_uhb1j"]
 script = ExtResource("2_4dc5c")
@@ -114,6 +115,11 @@ bus = &"SFX"
 
 [node name="1" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("7_paewv")
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_vcv82")
 volume_db = -7.0
 bus = &"SFX"
 

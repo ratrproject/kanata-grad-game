@@ -23,7 +23,10 @@ var deathSpinSpeed = 720
 @onready var _master_bus := AudioServer.get_bus_index(master_bus_name)
 var volume = 1
 
-var TowaState = preload("res://Scenes/Support/towa_support.tscn")
+var LunaSupport = preload("res://Scenes/Support/luna_support.tscn")
+var WatameSupport = preload("res://Scenes/Support/watame_support.tscn")
+var TowaSupport = preload("res://Scenes/Support/towa_support.tscn")
+var CocoSupport = preload("res://Scenes/Support/coco_support.tscn")
 var current_support : Node2D = null
 
 func _ready():
@@ -47,8 +50,17 @@ func _physics_process(delta: float):
 	elif canRegen:
 		power = min(power + TPRegen * delta, MaxTenshiPower)
 
-	if Input.is_action_pressed("Support") and current_support == null:
-		current_support = TowaState.instantiate()
+	if Input.is_action_pressed("Support1") and current_support == null:
+		current_support = LunaSupport.instantiate()
+		$SupportSpot.add_child(current_support)
+	if Input.is_action_pressed("Support2") and current_support == null:
+		current_support = WatameSupport.instantiate()
+		$SupportSpot.add_child(current_support)
+	if Input.is_action_pressed("Support3") and current_support == null:
+		current_support = TowaSupport.instantiate()
+		$SupportSpot.add_child(current_support)
+	if Input.is_action_pressed("Support4") and current_support == null:
+		current_support = CocoSupport.instantiate()
 		$SupportSpot.add_child(current_support)
 
 func take_damage(damage, direction):
@@ -67,6 +79,7 @@ func take_damage(damage, direction):
 
 func die(direction):
 	$AnimationPlayer.play("Death")
+	$DeathSFX.play()
 	is_dead = true
 	volume = 1
 	velocity = direction.normalized() * deathSpeed

@@ -46,8 +46,8 @@ func _ready():
 				mainState.FiringNodes.push_back(child.get_path())
 				if firingAngle != 0:
 					child.global_rotation = firingAngle + PI
-				child.rotating_speed = firingRotatingSpeed
-				if rotationAngle > 0:
+				child.rotating_speed = deg_to_rad(firingRotatingSpeed)
+				if abs(rotationAngle) > 0:
 					child.rotating_angle_limit = true
 					child.rotating_angle = rotationAngle
 					child.rotating_angle_default = firingAngle + PI

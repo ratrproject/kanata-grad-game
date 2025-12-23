@@ -1129,10 +1129,11 @@ func target_from_group(B:Dictionary, random:bool=false):
 		return
 	var res:Node2D; var smaller_dist = INF; var curr_dist;
 	for node in all_nodes:
-		curr_dist = B["position"].distance_to(node.global_position)
-		if curr_dist < smaller_dist:
-			smaller_dist = curr_dist
-			res = node
+		if node.visible:
+			curr_dist = B["position"].distance_to(node.global_position)
+			if curr_dist < smaller_dist:
+				smaller_dist = curr_dist
+				res = node
 	B["homing_target"] = res
 
 func target_from_segments(B:Dictionary, random:bool=false):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmwljje80jms1"]
+[gd_scene load_steps=20 format=3 uid="uid://dmwljje80jms1"]
 
 [ext_resource type="Script" uid="uid://dhq4oqe2v5j4u" path="res://Scripts/Player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://7c1rnpsmdwct" path="res://Sprites/kanata.png" id="2_x3wgy"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://didmrd53wkp3y" path="res://SFX/sfx_pc_kanatahit2.ogg" id="5_3smsa"]
 [ext_resource type="AudioStream" uid="uid://diy2g1uulrs8h" path="res://SFX/sfx_pc_kanatahit3.ogg" id="6_8erm5"]
 [ext_resource type="Texture2D" uid="uid://dhhdcq5vfc10x" path="res://Sprites/cookie-dust.png" id="7_3smsa"]
+[ext_resource type="AudioStream" uid="uid://cs7ffgvan2pps" path="res://SFX/sfx_pc_gameover.ogg" id="8_8erm5"]
 
 [sub_resource type="Gradient" id="Gradient_3smsa"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -207,6 +208,12 @@ libraries = {
 [node name="HitSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_f1ek2")
 volume_db = 3.0
+max_distance = 100000.0
+bus = &"SFX"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_8erm5")
+volume_db = 5.247
 max_distance = 100000.0
 bus = &"SFX"
 

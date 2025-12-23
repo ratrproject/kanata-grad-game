@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhlljhrikhedf"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_uyj4o"]
+[ext_resource type="Texture2D" uid="uid://c8k1667vruxuv" path="res://Sprites/coco fan.png" id="2_mc8id"]
+
+[node name="CocoFan" instance=ExtResource("1_uyj4o")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_mc8id")

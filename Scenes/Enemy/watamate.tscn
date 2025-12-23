@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwn7mjdkcp0s7"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_tbans"]
+[ext_resource type="Texture2D" uid="uid://tenm1fewf0gj" path="res://Sprites/Watamate.png" id="2_y1qk8"]
+
+[node name="Watamate" instance=ExtResource("1_tbans")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_y1qk8")

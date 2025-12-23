@@ -139,6 +139,15 @@ script = ExtResource("2_r6jal")
 level_name = "Level 1"
 level = 1
 
+[node name="Button2" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Level 2"
+script = ExtResource("2_r6jal")
+level_name = "Level 2"
+level = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer" groups=["LevelSelectDisplay"]]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -295,6 +304,7 @@ volume_db = -30.464
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button2" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button2" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/Button" to="." method="_on_level_select_back_pressed"]
 [connection signal="on_back_pressed" from="VBoxContainer/Setttings/VBoxContainer/Settings" to="." method="_on_settings_back_pressed"]

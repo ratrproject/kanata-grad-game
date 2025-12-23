@@ -5,12 +5,14 @@ var current_state = State.Spawning
 
 @export var max_speed : float = 800
 @export var leave_speed : float = 600
+@export var offscreen : bool = false
 
 func _ready():
 	if global_position.y > 540:
 		position.y += 600
 	else:
 		position.y -= 600
+	$AudioStreamPlayer2D.play()
 		
 	
 func _physics_process(delta):
@@ -25,11 +27,19 @@ func _physics_process(delta):
 			else:
 				var direction  = disp.normalized()
 				position += direction * speed
+		State.Activating:
+			if offscreen:
+				for child in get_children():
+					if child.script != null and child.script.resource_path == "res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd":	
+						child.global_position.x = -10
 		State.Despawning:
 			position.x -= leave_speed * delta
 	
 func activate():
-	$SpawnPoint.activate()
+	
+	for child in get_children():
+		if child.script != null and child.script.resource_path == "res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd":	
+			child.activate()
 	$Timer.start()
 	current_state = State.Activating
 

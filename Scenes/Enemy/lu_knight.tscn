@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtmbejt2x5fyc"]
+[gd_scene load_steps=5 format=3 uid="uid://dtmbejt2x5fyc"]
 
 [ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_3rkp0"]
 [ext_resource type="Texture2D" uid="uid://dwctfya2bjauk" path="res://Sprites/LuKnight.png" id="2_l5lj0"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_l5lj0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2w0i4"]
 radius = 32.51
 
 [node name="LuKnight" instance=ExtResource("1_3rkp0")]
+MaxHealth = 16.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_2w0i4")
@@ -14,3 +16,20 @@ shape = SubResource("CircleShape2D_2w0i4")
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, -3)
 texture = ExtResource("2_l5lj0")
+
+[node name="SpawnPoint" type="Node2D" parent="." index="6"]
+rotation = 3.1415927
+script = ExtResource("3_l5lj0")
+active = false
+auto_pattern_id = "10"
+shared_area_name = "1"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

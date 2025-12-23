@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://glr4pcnunibw" path="res://Scripts/main.gd" id="1_s4yg4"]
 [ext_resource type="PackedScene" uid="uid://ey5n4mbo7gap" path="res://Scenes/cursor.tscn" id="2_8gbba"]
-[ext_resource type="AudioStream" uid="uid://bwb4blj64pbhv" path="res://SFX/BGM/Last Resort Euro.wav" id="2_jjvhh"]
 [ext_resource type="AudioStream" uid="uid://bfoj7gti6bm4r" path="res://SFX/BGM/kanata menu theme (fallen wing).mp3" id="2_kry3j"]
+[ext_resource type="AudioStream" uid="uid://btm7bkwx6s63e" path="res://SFX/BGM/Last Resort Euro.6.wav" id="3_jjvhh"]
 
 [node name="Main" type="Node2D" groups=["Main"]]
 script = ExtResource("1_s4yg4")
@@ -22,7 +22,7 @@ bus = &"Music"
 
 [node name="LevelBGM" type="AudioStreamPlayer2D" parent="Jukebox"]
 process_mode = 3
-stream = ExtResource("2_jjvhh")
+stream = ExtResource("3_jjvhh")
 volume_db = -9.291
 max_distance = 100000.0
 bus = &"Music"

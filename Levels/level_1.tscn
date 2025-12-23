@@ -1,1689 +1,877 @@
-[gd_scene load_steps=88 format=3 uid="uid://btvpt5y00p63s"]
+[gd_scene load_steps=44 format=3 uid="uid://btvpt5y00p63s"]
 
-[ext_resource type="Script" uid="uid://bi8xu1xess6se" path="res://Scripts/LevelMain.gd" id="1_1rr3k"]
-[ext_resource type="PackedScene" uid="uid://dmwljje80jms1" path="res://Scenes/player.tscn" id="1_c7pbv"]
-[ext_resource type="Script" uid="uid://dcgilwbl85pua" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_77l7m"]
-[ext_resource type="Script" uid="uid://dufebxkmihomo" path="res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd" id="3_1rr3k"]
-[ext_resource type="Script" uid="uid://b7tgmign3yhgb" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_hsj5a"]
-[ext_resource type="Script" uid="uid://bephveoobbe0o" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="5_w38ni"]
-[ext_resource type="Script" uid="uid://e0ihj84jsgjo" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="6_uclwg"]
-[ext_resource type="Script" uid="uid://ltnfm11t8qch" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="7_8x6gh"]
-[ext_resource type="Script" uid="uid://cbjww5awy6nur" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="8_442u8"]
-[ext_resource type="Script" uid="uid://ce7q84xreo6pe" path="res://Scripts/Map/WorldMap.gd" id="9_fxl23"]
-[ext_resource type="Script" uid="uid://drffii8cq5yfy" path="res://Scripts/Map/WorldTile.gd" id="10_xg5g8"]
-[ext_resource type="PackedScene" uid="uid://wu4y28kb2oe1" path="res://Scenes/sprite_2d.tscn" id="11_p7b0h"]
+[ext_resource type="PackedScene" uid="uid://dn3aplp4ldeed" path="res://Levels/level_base.tscn" id="1_rfktq"]
 [ext_resource type="Script" uid="uid://b17stwfq4t7bp" path="res://Scripts/Map/Checkpoint.gd" id="12_2i07x"]
-[ext_resource type="Texture2D" uid="uid://oefqyj3yxs44" path="res://Sprites/background-1.png" id="13_442u8"]
-[ext_resource type="Texture2D" uid="uid://dvm8pkg6a631x" path="res://Sprites/background-2.png" id="14_fxl23"]
-[ext_resource type="PackedScene" uid="uid://dhfo2f24xwncm" path="res://Scenes/clouds.tscn" id="14_xg5g8"]
-[ext_resource type="Texture2D" uid="uid://dmughv4jpxsix" path="res://Sprites/background-3.png" id="15_fxl23"]
 [ext_resource type="PackedScene" uid="uid://cj6q1a2jjvrdu" path="res://Scenes/Enemy/pink_axolotl.tscn" id="15_w38ni"]
 [ext_resource type="PackedScene" uid="uid://cvvbsvcyite2a" path="res://Scenes/Enemy/gold_axolotl.tscn" id="16_uclwg"]
 [ext_resource type="PackedScene" uid="uid://qjk1rds4cwpa" path="res://Scenes/Enemy/wild_axolotl.tscn" id="17_8x6gh"]
-[ext_resource type="Script" uid="uid://buwkud8ujut73" path="res://Scripts/Map/WorldEnd.gd" id="17_as0xv"]
-[ext_resource type="PackedScene" uid="uid://dg3apmol1g4k2" path="res://Scenes/UserInterface.tscn" id="18_77l7m"]
-[ext_resource type="PackedScene" uid="uid://cpi2h8lffl18r" path="res://Scenes/Enemy/luna.tscn" id="21_p7b0h"]
-[ext_resource type="Script" uid="uid://cdpc6bjeigtuw" path="res://Scripts/LevelEnd.gd" id="23_442u8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg5g8"]
-size = Vector2(1920, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7b0h"]
-size = Vector2(100, 1080)
-
-[sub_resource type="Curve2D" id="Curve2D_tcdvl"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_dfwtf"]
-resource_name = "PatternLine"
-source_geometry_group_name = &"navigation_polygon_source_group"
-script = ExtResource("3_1rr3k")
-offset = Vector2(0, 40)
-bullet = "1"
-nbr = 2
-cooldown_spawn = 0.1
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_va1gj"]
-resource_name = "PatternCircle"
-script = ExtResource("4_hsj5a")
-symmetry_type = 9
-bullet = "3"
-nbr = 8
-iterations = -1
-cooldown_spawn = 0.5
-metadata/_custom_type_script = "uid://b7tgmign3yhgb"
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_tcdvl"]
-resource_name = "PatternCircle"
-script = ExtResource("4_hsj5a")
-angle_total = 0.7853981633974483
-bullet = "2"
-nbr = 5
-iterations = -1
-cooldown_spawn = 2.0
-metadata/_custom_type_script = "uid://b7tgmign3yhgb"
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_d70p6"]
-resource_name = "PatternOne"
-script = ExtResource("5_w38ni")
-bullet = "4"
-iterations = -1
-cooldown_spawn = 3.0
-metadata/_custom_type_script = "uid://bephveoobbe0o"
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_1rr3k"]
-resource_name = "PatternOne"
-script = ExtResource("5_w38ni")
-bullet = "2"
-iterations = -1
-metadata/_custom_type_script = "uid://bephveoobbe0o"
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_xg5g8"]
-resource_name = "PatternOne"
-script = ExtResource("5_w38ni")
-bullet = "2"
-iterations = -1
-cooldown_spawn = 0.3
-metadata/_custom_type_script = "uid://bephveoobbe0o"
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_p7b0h"]
-resource_name = "PatternCircle"
-script = ExtResource("4_hsj5a")
-angle_total = 1.0471975511965976
-bullet = "5"
-nbr = 5
-iterations = -1
-cooldown_spawn = 1.5
-metadata/_custom_type_script = "uid://b7tgmign3yhgb"
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_442u8"]
-resource_name = "PatternCircle"
-script = ExtResource("4_hsj5a")
-angle_total = 1.0471975511965976
-bullet = "1"
-nbr = 7
-iterations = 6
-cooldown_spawn = 0.2
-metadata/_custom_type_script = "uid://b7tgmign3yhgb"
-
-[sub_resource type="Curve2D" id="Curve2D_20h7r"]
-
-[sub_resource type="Curve" id="Curve_7non7"]
-
-[sub_resource type="Resource" id="Resource_fp8br"]
-script = ExtResource("7_8x6gh")
-ID = "1"
-texture = "1"
-SFX = "1"
-metadata/_custom_type_script = "uid://ltnfm11t8qch"
-
-[sub_resource type="Curve" id="Curve_abus5"]
-
-[sub_resource type="PackedDataContainer" id="PackedDataContainer_dfwtf"]
-script = ExtResource("8_442u8")
-anim_idle = SubResource("Resource_fp8br")
-damage = 1.0
-speed = 1000.0
-scale = 1.0
-angle = 0.0
-groups = PackedStringArray()
-spec_bounces = 0
-spec_no_collision = false
-spec_modulate_loop = 0.0
-spec_trail_length = 0.0
-spec_trail_width = 0.0
-spec_trail_modulate = Color(1, 1, 1, 1)
-spec_rotating_speed = 0.0
-death_after_time = 10.0
-death_outside_box = Rect2(0, 0, 0, 0)
-death_from_collision = true
-a_direction_equation = ""
-a_curve_movement = 0
-a_speed_multiplier = SubResource("Curve_7non7")
-a_speed_multi_iterations = 0
-a_speed_multi_scale = 0.0
-trigger_container = ""
-trigger_wait_for_shot = true
-homing_type = 0
-homing_target = NodePath("")
-homing_steer = 0.0
-homing_time_start = 0.0
-homing_duration = 999.0
-scale_multi_iterations = 0
-scale_multiplier = SubResource("Curve_abus5")
-scale_multi_scale = 1.0
-r_randomisation_chances = 1.0
-r_speed_choice = PackedFloat32Array()
-r_speed_variation = Vector3(0, 0, 0)
-r_scale_choice = PackedFloat32Array()
-r_scale_variation = Vector3(0, 0, 0)
-r_angle_choice = PackedFloat32Array()
-r_angle_variation = Vector3(0, 0, 0)
-r_group_choice = []
-r_bounce_choice = PackedInt32Array()
-r_bounce_variation = Vector3(0, 0, 0)
-r_no_coll_chances = 0.0
-r_modulate_variation = Vector3(0, 0, 0)
-r_trail_length_variation = Vector3(0, 0, 0)
-r_trail_color_variation = Vector3(0, 0, 0)
-r_rotating_variation = Vector3(0, 0, 0)
-r_death_after_choice = PackedFloat32Array()
-r_death_after_variation = Vector3(0, 0, 0)
-r_death_outside_chances = 0.0
-r_dir_equation_choice = PackedStringArray()
-r_curve_choice = []
-r_speed_multi_curve_choice = []
-r_speed_multi_iter_variation = Vector3(0, 0, 0)
-r_speed_multi_scale_variation = Vector3(0, 0, 0)
-r_trigger_choice = PackedStringArray()
-r_wait_for_shot_chances = 0.0
-r_homing_target_choice = []
-r_special_target_choice = PackedStringArray()
-r_group_target_choice = PackedStringArray()
-r_pos_target_choice = PackedVector2Array()
-r_steer_choice = PackedFloat32Array()
-r_steer_variation = Vector3(0, 0, 0)
-r_homing_delay_choice = PackedFloat32Array()
-r_homing_delay_variation = Vector3(0, 0, 0)
-r_homing_dur_choice = PackedFloat32Array()
-r_homing_dur_variation = Vector3(0, 0, 0)
-r_scale_multi_curve_choice = []
-r_scale_multi_iter_variation = Vector3(0, 0, 0)
-r_scale_multi_scale_variation = Vector3(0, 0, 0)
-
-[sub_resource type="PackedDataContainer" id="PackedDataContainer_6tjl0"]
-script = ExtResource("8_442u8")
-damage = 3.0
-speed = 250.0
-scale = 1.0
-angle = 0.0
-groups = PackedStringArray()
-spec_bounces = 0
-spec_no_collision = false
-spec_modulate_loop = 0.0
-spec_trail_length = 0.0
-spec_trail_width = 0.0
-spec_trail_modulate = Color(1, 1, 1, 1)
-spec_rotating_speed = 0.0
-death_after_time = 10.0
-death_outside_box = Rect2(0, 0, 0, 0)
-death_from_collision = true
-a_direction_equation = ""
-a_curve_movement = 0
-a_speed_multiplier = SubResource("Curve_7non7")
-a_speed_multi_iterations = 0
-a_speed_multi_scale = 0.0
-trigger_container = ""
-trigger_wait_for_shot = true
-homing_type = 0
-homing_target = NodePath("")
-homing_steer = 0.0
-homing_time_start = 0.0
-homing_duration = 999.0
-scale_multi_iterations = 0
-scale_multiplier = SubResource("Curve_abus5")
-scale_multi_scale = 1.0
-r_randomisation_chances = 1.0
-r_speed_choice = PackedFloat32Array()
-r_speed_variation = Vector3(0, 0, 0)
-r_scale_choice = PackedFloat32Array()
-r_scale_variation = Vector3(0, 0, 0)
-r_angle_choice = PackedFloat32Array()
-r_angle_variation = Vector3(0, 0, 0)
-r_group_choice = []
-r_bounce_choice = PackedInt32Array()
-r_bounce_variation = Vector3(0, 0, 0)
-r_no_coll_chances = 0.0
-r_modulate_variation = Vector3(0, 0, 0)
-r_trail_length_variation = Vector3(0, 0, 0)
-r_trail_color_variation = Vector3(0, 0, 0)
-r_rotating_variation = Vector3(0, 0, 0)
-r_death_after_choice = PackedFloat32Array()
-r_death_after_variation = Vector3(0, 0, 0)
-r_death_outside_chances = 0.0
-r_dir_equation_choice = PackedStringArray()
-r_curve_choice = []
-r_speed_multi_curve_choice = []
-r_speed_multi_iter_variation = Vector3(0, 0, 0)
-r_speed_multi_scale_variation = Vector3(0, 0, 0)
-r_trigger_choice = PackedStringArray()
-r_wait_for_shot_chances = 0.0
-r_homing_target_choice = []
-r_special_target_choice = PackedStringArray()
-r_group_target_choice = PackedStringArray()
-r_pos_target_choice = PackedVector2Array()
-r_steer_choice = PackedFloat32Array()
-r_steer_variation = Vector3(0, 0, 0)
-r_homing_delay_choice = PackedFloat32Array()
-r_homing_delay_variation = Vector3(0, 0, 0)
-r_homing_dur_choice = PackedFloat32Array()
-r_homing_dur_variation = Vector3(0, 0, 0)
-r_scale_multi_curve_choice = []
-r_scale_multi_iter_variation = Vector3(0, 0, 0)
-r_scale_multi_scale_variation = Vector3(0, 0, 0)
-
-[sub_resource type="PackedDataContainer" id="PackedDataContainer_p7b0h"]
-script = ExtResource("8_442u8")
-damage = 5.0
-speed = 250.0
-scale = 1.0
-angle = 0.0
-groups = PackedStringArray()
-spec_bounces = 0
-spec_no_collision = false
-spec_modulate_loop = 0.0
-spec_trail_length = 0.0
-spec_trail_width = 0.0
-spec_trail_modulate = Color(1, 1, 1, 1)
-spec_rotating_speed = 0.0
-death_after_time = 10.0
-death_outside_box = Rect2(0, 0, 0, 0)
-death_from_collision = true
-a_direction_equation = "x"
-a_curve_movement = 0
-a_speed_multiplier = SubResource("Curve_7non7")
-a_speed_multi_iterations = 0
-a_speed_multi_scale = 0.0
-trigger_container = ""
-trigger_wait_for_shot = true
-homing_type = 0
-homing_target = NodePath("")
-homing_steer = 0.0
-homing_time_start = 0.0
-homing_duration = 999.0
-scale_multi_iterations = 0
-scale_multiplier = SubResource("Curve_abus5")
-scale_multi_scale = 1.0
-r_randomisation_chances = 1.0
-r_speed_choice = PackedFloat32Array()
-r_speed_variation = Vector3(0, 0, 0)
-r_scale_choice = PackedFloat32Array()
-r_scale_variation = Vector3(0, 0, 0)
-r_angle_choice = PackedFloat32Array()
-r_angle_variation = Vector3(0, 0, 0)
-r_group_choice = []
-r_bounce_choice = PackedInt32Array()
-r_bounce_variation = Vector3(0, 0, 0)
-r_no_coll_chances = 0.0
-r_modulate_variation = Vector3(0, 0, 0)
-r_trail_length_variation = Vector3(0, 0, 0)
-r_trail_color_variation = Vector3(0, 0, 0)
-r_rotating_variation = Vector3(0, 0, 0)
-r_death_after_choice = PackedFloat32Array()
-r_death_after_variation = Vector3(0, 0, 0)
-r_death_outside_chances = 0.0
-r_dir_equation_choice = PackedStringArray()
-r_curve_choice = []
-r_speed_multi_curve_choice = []
-r_speed_multi_iter_variation = Vector3(0, 0, 0)
-r_speed_multi_scale_variation = Vector3(0, 0, 0)
-r_trigger_choice = PackedStringArray()
-r_wait_for_shot_chances = 0.0
-r_homing_target_choice = []
-r_special_target_choice = PackedStringArray()
-r_group_target_choice = PackedStringArray()
-r_pos_target_choice = PackedVector2Array()
-r_steer_choice = PackedFloat32Array()
-r_steer_variation = Vector3(0, 0, 0)
-r_homing_delay_choice = PackedFloat32Array()
-r_homing_delay_variation = Vector3(0, 0, 0)
-r_homing_dur_choice = PackedFloat32Array()
-r_homing_dur_variation = Vector3(0, 0, 0)
-r_scale_multi_curve_choice = []
-r_scale_multi_iter_variation = Vector3(0, 0, 0)
-r_scale_multi_scale_variation = Vector3(0, 0, 0)
-
-[sub_resource type="PackedDataContainer" id="PackedDataContainer_p11gg"]
-script = ExtResource("8_442u8")
-damage = 16.0
-speed = 250.0
-scale = 3.0
-angle = 0.0
-groups = PackedStringArray()
-spec_bounces = 0
-spec_no_collision = false
-spec_modulate_loop = 0.0
-spec_trail_length = 0.0
-spec_trail_width = 0.0
-spec_trail_modulate = Color(1, 1, 1, 1)
-spec_rotating_speed = 0.0
-death_after_time = 10.0
-death_outside_box = Rect2(0, 0, 0, 0)
-death_from_collision = true
-a_direction_equation = ""
-a_curve_movement = 0
-a_speed_multiplier = SubResource("Curve_7non7")
-a_speed_multi_iterations = 0
-a_speed_multi_scale = 0.0
-trigger_container = ""
-trigger_wait_for_shot = true
-homing_type = 3
-homing_group = "Player"
-homing_select_in_group = 0
-homing_steer = 200.0
-homing_time_start = 1.0
-homing_duration = 999.0
-scale_multi_iterations = 0
-scale_multiplier = SubResource("Curve_abus5")
-scale_multi_scale = 1.0
-r_randomisation_chances = 1.0
-r_speed_choice = PackedFloat32Array()
-r_speed_variation = Vector3(0, 0, 0)
-r_scale_choice = PackedFloat32Array()
-r_scale_variation = Vector3(0, 0, 0)
-r_angle_choice = PackedFloat32Array()
-r_angle_variation = Vector3(0, 0, 0)
-r_group_choice = []
-r_bounce_choice = PackedInt32Array()
-r_bounce_variation = Vector3(0, 0, 0)
-r_no_coll_chances = 0.0
-r_modulate_variation = Vector3(0, 0, 0)
-r_trail_length_variation = Vector3(0, 0, 0)
-r_trail_color_variation = Vector3(0, 0, 0)
-r_rotating_variation = Vector3(0, 0, 0)
-r_death_after_choice = PackedFloat32Array()
-r_death_after_variation = Vector3(0, 0, 0)
-r_death_outside_chances = 0.0
-r_dir_equation_choice = PackedStringArray()
-r_curve_choice = []
-r_speed_multi_curve_choice = []
-r_speed_multi_iter_variation = Vector3(0, 0, 0)
-r_speed_multi_scale_variation = Vector3(0, 0, 0)
-r_trigger_choice = PackedStringArray()
-r_wait_for_shot_chances = 0.0
-r_homing_target_choice = []
-r_special_target_choice = PackedStringArray()
-r_group_target_choice = PackedStringArray()
-r_pos_target_choice = PackedVector2Array()
-r_steer_choice = PackedFloat32Array()
-r_steer_variation = Vector3(0, 0, 0)
-r_homing_delay_choice = PackedFloat32Array()
-r_homing_delay_variation = Vector3(0, 0, 0)
-r_homing_dur_choice = PackedFloat32Array()
-r_homing_dur_variation = Vector3(0, 0, 0)
-r_scale_multi_curve_choice = []
-r_scale_multi_iter_variation = Vector3(0, 0, 0)
-r_scale_multi_scale_variation = Vector3(0, 0, 0)
-
-[sub_resource type="Curve" id="Curve_442u8"]
-
-[sub_resource type="Curve" id="Curve_fxl23"]
-
-[sub_resource type="PackedDataContainer" id="PackedDataContainer_d70p6"]
-script = ExtResource("8_442u8")
-damage = 5.0
-speed = 300.0
-scale = 1.0
-angle = 0.0
-groups = PackedStringArray()
-spec_bounces = 0
-spec_no_collision = false
-spec_modulate_loop = 0.0
-spec_trail_length = 0.0
-spec_trail_width = 0.0
-spec_trail_modulate = Color(1, 1, 1, 1)
-spec_rotating_speed = 0.0
-death_after_time = 10.0
-death_outside_box = Rect2(0, 0, 0, 0)
-death_from_collision = true
-a_direction_equation = ""
-a_curve_movement = 0
-a_speed_multiplier = SubResource("Curve_442u8")
-a_speed_multi_iterations = 0
-a_speed_multi_scale = 0.0
-trigger_container = ""
-trigger_wait_for_shot = true
-homing_type = 3
-homing_group = "Player"
-homing_select_in_group = 0
-homing_steer = 50.0
-homing_time_start = 1.5
-homing_duration = 999.0
-scale_multi_iterations = 0
-scale_multiplier = SubResource("Curve_fxl23")
-scale_multi_scale = 1.0
-r_randomisation_chances = 1.0
-r_speed_choice = PackedFloat32Array()
-r_speed_variation = Vector3(0, 0, 0)
-r_scale_choice = PackedFloat32Array()
-r_scale_variation = Vector3(0, 0, 0)
-r_angle_choice = PackedFloat32Array()
-r_angle_variation = Vector3(0, 0, 0)
-r_group_choice = []
-r_bounce_choice = PackedInt32Array()
-r_bounce_variation = Vector3(0, 0, 0)
-r_no_coll_chances = 0.0
-r_modulate_variation = Vector3(0, 0, 0)
-r_trail_length_variation = Vector3(0, 0, 0)
-r_trail_color_variation = Vector3(0, 0, 0)
-r_rotating_variation = Vector3(0, 0, 0)
-r_death_after_choice = PackedFloat32Array()
-r_death_after_variation = Vector3(0, 0, 0)
-r_death_outside_chances = 0.0
-r_dir_equation_choice = PackedStringArray()
-r_curve_choice = []
-r_speed_multi_curve_choice = []
-r_speed_multi_iter_variation = Vector3(0, 0, 0)
-r_speed_multi_scale_variation = Vector3(0, 0, 0)
-r_trigger_choice = PackedStringArray()
-r_wait_for_shot_chances = 0.0
-r_homing_target_choice = []
-r_special_target_choice = PackedStringArray()
-r_group_target_choice = PackedStringArray()
-r_pos_target_choice = PackedVector2Array()
-r_steer_choice = PackedFloat32Array()
-r_steer_variation = Vector3(0, 0, 0)
-r_homing_delay_choice = PackedFloat32Array()
-r_homing_delay_variation = Vector3(0, 0, 0)
-r_homing_dur_choice = PackedFloat32Array()
-r_homing_dur_variation = Vector3(0, 0, 0)
-r_scale_multi_curve_choice = []
-r_scale_multi_iter_variation = Vector3(0, 0, 0)
-r_scale_multi_scale_variation = Vector3(0, 0, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8uvj"]
-size = Vector2(2000, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4u7n5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urlm"]
 size = Vector2(20, 1000)
 
-[sub_resource type="Curve2D" id="Curve2D_6tjl0"]
+[sub_resource type="Curve2D" id="Curve2D_77x7w"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1807, -261, 0, 0, 0, 0, 1109, -137)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_1rr3k"]
+[sub_resource type="Curve2D" id="Curve2D_xoyoh"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1983, 164, 0, 0, 0, 0, 870, 167)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_hsj5a"]
+[sub_resource type="Curve2D" id="Curve2D_f4pg2"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1991, 709, 0, 0, 0, 0, 1049, 496)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_fxl23"]
+[sub_resource type="Curve2D" id="Curve2D_62b6n"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1458, -417, 0, 0, 0, 0, 1366, -84)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_xg5g8"]
+[sub_resource type="Curve2D" id="Curve2D_rs4xw"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1811, 611, 0, 0, 0, 0, 1248, 479)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_p7b0h"]
+[sub_resource type="Curve2D" id="Curve2D_lk57d"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 913, -452, 0, 0, 0, 0, 814, -214)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_yegjp"]
+[sub_resource type="Curve2D" id="Curve2D_2hkqn"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(-88, -21, 88, 21, 814, -214, -13, -60, 13, 60, 923, -131, 44, -46, -44, 46, 885, 51, 100, -3, -100, 3, 705, 130, 4, 102, -4, -102, 477, 19, -107, 105, 107, -105, 549, -196, -55, -50, 55, 50, 814, -214)
 }
 point_count = 7
 
-[sub_resource type="Curve2D" id="Curve2D_2i07x"]
+[sub_resource type="Curve2D" id="Curve2D_34erp"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1067, 809, 0, 0, 0, 0, 740, 567)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_g50tq"]
+[sub_resource type="Curve2D" id="Curve2D_k2bse"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(140, -6, -140, 6, 977, 367, 6, 78, -6, -78, 635, 231, -93, 86, 93, -86, 705, -85, -112, -61, 112, 61, 1058, -106, 20, -67, -20, 67, 1100, 187, 0, 0, 0, 0, 977, 367)
 }
 point_count = 6
 
-[sub_resource type="Curve2D" id="Curve2D_d86m7"]
+[sub_resource type="Curve2D" id="Curve2D_c7pbv"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1241, -464, 0, 0, 0, 0, 1191, -285)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_as0xv"]
+[sub_resource type="Curve2D" id="Curve2D_77l7m"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1192, -287, 0, 0, 0, 0, 1192, 635)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_4qcx6"]
+[sub_resource type="Curve2D" id="Curve2D_1rr3k"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 887, 759, 0, 0, 0, 0, 821, 643)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_v1e0a"]
+[sub_resource type="Curve2D" id="Curve2D_hsj5a"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 821, 641, 0, 0, 0, 0, 821, -280)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_wus38"]
+[sub_resource type="Curve2D" id="Curve2D_w38ni"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 951, -484, 0, 0, 0, 0, 822, -286)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_ielgn"]
+[sub_resource type="Curve2D" id="Curve2D_uclwg"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 821, -280, 0, 0, 0, 0, 821, 641)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_qvmnn"]
+[sub_resource type="Curve2D" id="Curve2D_8x6gh"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1812, 542, 0, 0, 0, 0, 1388, 521)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_sj4vb"]
+[sub_resource type="Curve2D" id="Curve2D_442u8"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1827, 221, 0, 0, 0, 0, 1303, 267)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_q1aj6"]
+[sub_resource type="Curve2D" id="Curve2D_fxl23"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 951, -484, 0, 0, 0, 0, 676, -297)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_e3ngr"]
+[sub_resource type="Curve2D" id="Curve2D_xg5g8"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 678, -287, 0, 0, 0, 0, 1268, 642)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_xdel3"]
+[sub_resource type="Curve2D" id="Curve2D_p7b0h"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 887, 759, 0, 0, 0, 0, 821, 643)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_1unet"]
+[sub_resource type="Curve2D" id="Curve2D_2i07x"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 605, 621, 0, 0, 0, 0, 1023, -221)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_4rxjj"]
+[sub_resource type="Curve2D" id="Curve2D_g50tq"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1742, -357, 0, 0, 0, 0, 1411, -49)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_w38ni"]
+[sub_resource type="Curve2D" id="Curve2D_yegjp"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 600, -360, 0, 0, 0, 0, 600, -100)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_uclwg"]
+[sub_resource type="Curve2D" id="Curve2D_d86m7"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 600, -100, 0, 0, 0, 0, 600, 580)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_yxjiu"]
+[sub_resource type="Curve2D" id="Curve2D_4qcx6"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 342, -403, 0, 0, 0, 0, 163, -191)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_qr58x"]
+[sub_resource type="Curve2D" id="Curve2D_as0xv"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 163, -183, 0, 0, 0, 0, 5, 497, 0, 0, 0, 0, 366, 523, 0, 0, 0, 0, 555, -183, 0, 0, 0, 0, 163, -183)
 }
 point_count = 5
 
-[sub_resource type="Curve2D" id="Curve2D_gha82"]
+[sub_resource type="Curve2D" id="Curve2D_v1e0a"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 133, 765, 0, 0, 0, 0, 330, 539)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_dihae"]
+[sub_resource type="Curve2D" id="Curve2D_ielgn"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 320, 547, 0, 0, 0, 0, 387, -262, 0, 0, 0, 0, -17, -194, 0, 0, 0, 0, 7, 568, 0, 0, 0, 0, 320, 547)
 }
 point_count = 5
 
-[sub_resource type="Curve2D" id="Curve2D_3uvis"]
+[sub_resource type="Curve2D" id="Curve2D_wus38"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 586, -376, 0, 0, 0, 0, 602, -205)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_j7547"]
+[sub_resource type="Curve2D" id="Curve2D_qvmnn"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 605, -228, 0, 0, 0, 0, 491, 584)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_d3sl6"]
+[sub_resource type="Curve2D" id="Curve2D_sj4vb"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 645, 740, 0, 0, 0, 0, 755, 568)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_4iwfn"]
+[sub_resource type="Curve2D" id="Curve2D_q1aj6"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 691, -270, 0, 0, 0, 0, 761, 581)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_8x6gh"]
+[sub_resource type="Curve2D" id="Curve2D_e3ngr"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 799, -417, 0, 0, 0, 0, 890, -38)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_442u8"]
+[sub_resource type="Curve2D" id="Curve2D_1unet"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1350, 431, 0, 0, 0, 0, 993, 162)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_roty5"]
+[sub_resource type="Curve2D" id="Curve2D_xdel3"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1349, 83, 0, 0, 0, 0, 134, 126)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_7brrn"]
+[sub_resource type="Curve2D" id="Curve2D_4rxjj"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -73, 402, 0, 0, 0, 0, -73, 75)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_6iv6h"]
+[sub_resource type="Curve2D" id="Curve2D_yxjiu"]
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -74, 74, 0, 0, 0, 0, -82, -526, 0, 0, 0, 0, 503, -541, 0, 0, 0, 0, 500, 74, 0, 0, 0, 0, -74, 74)
 }
 point_count = 5
 
-[sub_resource type="Curve2D" id="Curve2D_2up5j"]
-bake_interval = 50.0
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1128, -555, 688.5209, -214.5733, -688.5209, 214.5733, 385, 112)
-}
-point_count = 2
+[node name="GameMain" instance=ExtResource("1_rfktq")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qflrp"]
-size = Vector2(124, 707)
+[node name="LevelEnd" parent="WorldMap/Checkpoints" index="0"]
+position = Vector2(1026, 28)
 
-[node name="GameMain" type="Node2D" groups=["GameMain"]]
-script = ExtResource("1_1rr3k")
-
-[node name="Player" parent="." instance=ExtResource("1_c7pbv")]
-position = Vector2(187, 324)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
-collision_layer = 4096
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(0, -590)
-shape = SubResource("RectangleShape2D_xg5g8")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(0, 590)
-shape = SubResource("RectangleShape2D_xg5g8")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(1010, 0)
-shape = SubResource("RectangleShape2D_p7b0h")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(-1010, 0)
-shape = SubResource("RectangleShape2D_p7b0h")
-
-[node name="Patterns" type="Node2D" parent="."]
-
-[node name="PlayerPattern" type="Path2D" parent="Patterns"]
-position = Vector2(0, 4.804)
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "1"
-pattern = SubResource("NavigationPolygon_dfwtf")
-
-[node name="CirclePattern" type="Path2D" parent="Patterns"]
-position = Vector2(0, 4.804)
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "2"
-pattern = SubResource("NavigationPolygon_va1gj")
-
-[node name="WavePattern" type="Path2D" parent="Patterns"]
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "3"
-pattern = SubResource("NavigationPolygon_tcdvl")
-
-[node name="HomingPattern" type="Path2D" parent="Patterns"]
-position = Vector2(0, 4.804)
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "4"
-pattern = SubResource("NavigationPolygon_d70p6")
-
-[node name="SinglePattern" type="Path2D" parent="Patterns"]
-position = Vector2(0, 4.804)
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "5"
-pattern = SubResource("NavigationPolygon_1rr3k")
-
-[node name="SinglePattern2" type="Path2D" parent="Patterns"]
-position = Vector2(0, 4.804)
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "6"
-pattern = SubResource("NavigationPolygon_xg5g8")
-
-[node name="WavePattern2" type="Path2D" parent="Patterns"]
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "7"
-pattern = SubResource("NavigationPolygon_p7b0h")
-
-[node name="TowaSupportPattern" type="Path2D" parent="Patterns"]
-curve = SubResource("Curve2D_tcdvl")
-script = ExtResource("2_77l7m")
-id = "8"
-pattern = SubResource("NavigationPolygon_442u8")
-
-[node name="BulletProps" type="Node2D" parent="."]
-
-[node name="PlayerBullet" type="Path2D" parent="BulletProps"]
-curve = SubResource("Curve2D_20h7r")
-script = ExtResource("6_uclwg")
-id = "1"
-props = SubResource("PackedDataContainer_dfwtf")
-
-[node name="StraightBullet" type="Path2D" parent="BulletProps"]
-curve = SubResource("Curve2D_20h7r")
-script = ExtResource("6_uclwg")
-id = "2"
-props = SubResource("PackedDataContainer_6tjl0")
-
-[node name="CurveBullet" type="Path2D" parent="BulletProps"]
-curve = SubResource("Curve2D_20h7r")
-script = ExtResource("6_uclwg")
-id = "3"
-props = SubResource("PackedDataContainer_p7b0h")
-
-[node name="BigBullet" type="Path2D" parent="BulletProps"]
-curve = SubResource("Curve2D_20h7r")
-script = ExtResource("6_uclwg")
-id = "4"
-props = SubResource("PackedDataContainer_p11gg")
-
-[node name="CurveBullet2" type="Path2D" parent="BulletProps"]
-curve = SubResource("Curve2D_20h7r")
-script = ExtResource("6_uclwg")
-id = "5"
-props = SubResource("PackedDataContainer_d70p6")
-
-[node name="WorldMap" type="Node2D" parent="." groups=["Background"]]
-script = ExtResource("9_fxl23")
-
-[node name="Background" type="Node2D" parent="WorldMap"]
-position = Vector2(960, 540)
-
-[node name="Back" type="Node2D" parent="WorldMap/Background"]
-
-[node name="Area2D" type="Area2D" parent="WorldMap/Background/Back"]
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-bg_position = 2
-
-[node name="Sprite2D" parent="WorldMap/Background/Back/Area2D" instance=ExtResource("11_p7b0h")]
-z_as_relative = true
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("15_fxl23")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Back/Area2D"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Area2D2" type="Area2D" parent="WorldMap/Background/Back"]
-position = Vector2(2000, 0)
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-bg_position = 2
-
-[node name="Sprite2D" parent="WorldMap/Background/Back/Area2D2" instance=ExtResource("11_p7b0h")]
-z_as_relative = true
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("15_fxl23")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Back/Area2D2"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Area2D3" type="Area2D" parent="WorldMap/Background/Back"]
-position = Vector2(4000, 0)
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-bg_position = 2
-
-[node name="Sprite2D" parent="WorldMap/Background/Back/Area2D3" instance=ExtResource("11_p7b0h")]
-z_as_relative = true
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("15_fxl23")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Back/Area2D3"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Clouds" parent="WorldMap/Background/Back" instance=ExtResource("14_xg5g8")]
-position = Vector2(-1457, -1142)
-
-[node name="Mid" type="Node2D" parent="WorldMap/Background"]
-
-[node name="Area2D" type="Area2D" parent="WorldMap/Background/Mid"]
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-bg_position = 1
-
-[node name="Sprite2D" parent="WorldMap/Background/Mid/Area2D" instance=ExtResource("11_p7b0h")]
-z_index = -230
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("14_fxl23")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Mid/Area2D"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Area2D2" type="Area2D" parent="WorldMap/Background/Mid"]
-position = Vector2(2000, 0)
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-bg_position = 1
-
-[node name="Sprite2D" parent="WorldMap/Background/Mid/Area2D2" instance=ExtResource("11_p7b0h")]
-z_index = -230
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("14_fxl23")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Mid/Area2D2"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Area2D3" type="Area2D" parent="WorldMap/Background/Mid"]
-position = Vector2(4000, 0)
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-bg_position = 1
-
-[node name="Sprite2D" parent="WorldMap/Background/Mid/Area2D3" instance=ExtResource("11_p7b0h")]
-z_index = -230
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("14_fxl23")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Mid/Area2D3"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Front" type="Node2D" parent="WorldMap/Background"]
-
-[node name="Area2D" type="Area2D" parent="WorldMap/Background/Front"]
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-
-[node name="Sprite2D" parent="WorldMap/Background/Front/Area2D" instance=ExtResource("11_p7b0h")]
-z_index = -220
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("13_442u8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Front/Area2D"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Area2D2" type="Area2D" parent="WorldMap/Background/Front"]
-position = Vector2(2000, 0)
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-
-[node name="Sprite2D" parent="WorldMap/Background/Front/Area2D2" instance=ExtResource("11_p7b0h")]
-z_index = -220
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("13_442u8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Front/Area2D2"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Area2D3" type="Area2D" parent="WorldMap/Background/Front"]
-position = Vector2(4000, 0)
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("10_xg5g8")
-
-[node name="Sprite2D" parent="WorldMap/Background/Front/Area2D3" instance=ExtResource("11_p7b0h")]
-z_index = -220
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("13_442u8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Background/Front/Area2D3"]
-shape = SubResource("RectangleShape2D_b8uvj")
-
-[node name="Checkpoints" type="Node2D" parent="WorldMap"]
-
-[node name="Checkpoint" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint" type="Node2D" parent="WorldMap/Checkpoints" index="1"]
 visible = false
 position = Vector2(528, 361)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint" index="0"]
 position = Vector2(-364, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint" index="1"]
 position = Vector2(-104, 0)
 
-[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint/Enemies" index="0" instance=ExtResource("15_w38ni")]
 position = Vector2(1835, -264)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy/Path2D")]
 firingAngle = -0.2076941809873253
 
-[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint/Enemies" index="1" instance=ExtResource("15_w38ni")]
 position = Vector2(2023, 158)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy2/Path2D")]
 firingAngle = -0.2076941809873253
 
-[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint/Enemies" index="2" instance=ExtResource("15_w38ni")]
 position = Vector2(2036, 710)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy3/Path2D")]
 firingAngle = 0.4450589592585541
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint" index="2"]
 position = Vector2(-104, 0)
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths" index="0"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy"]
-curve = SubResource("Curve2D_6tjl0")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_77x7w")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths" index="1"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy2"]
-curve = SubResource("Curve2D_1rr3k")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy2" index="0"]
+curve = SubResource("Curve2D_xoyoh")
 
-[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths"]
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths" index="2"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy3"]
-curve = SubResource("Curve2D_hsj5a")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy3" index="0"]
+curve = SubResource("Curve2D_f4pg2")
 
-[node name="Checkpoint2" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint2" type="Node2D" parent="WorldMap/Checkpoints" index="2"]
 visible = false
 position = Vector2(605, 361)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint2"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint2" index="0"]
 position = Vector2(-364, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint2/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint2/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2" index="1"]
 position = Vector2(-104, 0)
 
-[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" index="0" instance=ExtResource("15_w38ni")]
 position = Vector2(1472, -460)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy/Path2D")]
 firingAngle = -0.4363323129985824
 
-[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" index="1" instance=ExtResource("15_w38ni")]
 position = Vector2(1837, 613)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy2/Path2D")]
 firingAngle = 0.2076941809873253
 
-[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" index="2" instance=ExtResource("15_w38ni")]
 position = Vector2(919, -490)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy3/Path2D"), NodePath("../../Paths/Enemy3/Path2D2")]
 
-[node name="PinkAxolotl4" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl4" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" index="3" instance=ExtResource("15_w38ni")]
 position = Vector2(1091, 828)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy4/Path2D"), NodePath("../../Paths/Enemy4/Path2D2")]
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2" index="2"]
 position = Vector2(-104, 0)
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths" index="0"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy"]
-curve = SubResource("Curve2D_fxl23")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_62b6n")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths" index="1"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy2"]
-curve = SubResource("Curve2D_xg5g8")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy2" index="0"]
+curve = SubResource("Curve2D_rs4xw")
 
-[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths"]
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths" index="2"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy3"]
-curve = SubResource("Curve2D_p7b0h")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy3" index="0"]
+curve = SubResource("Curve2D_lk57d")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy3"]
-curve = SubResource("Curve2D_yegjp")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy3" index="1"]
+curve = SubResource("Curve2D_2hkqn")
 
-[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths"]
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths" index="3"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy4"]
-curve = SubResource("Curve2D_2i07x")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy4" index="0"]
+curve = SubResource("Curve2D_34erp")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy4"]
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy4" index="1"]
 position = Vector2(-240, 195)
-curve = SubResource("Curve2D_g50tq")
+curve = SubResource("Curve2D_k2bse")
 
-[node name="Checkpoint3" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint3" type="Node2D" parent="WorldMap/Checkpoints" index="3"]
 visible = false
 position = Vector2(705, 361)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint3"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint3" index="0"]
 position = Vector2(-364, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint3/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint3/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3" index="1"]
 position = Vector2(-104, 0)
 
-[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" index="0" instance=ExtResource("16_uclwg")]
 position = Vector2(1244, -499)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy/Path2D"), NodePath("../../Paths/Enemy/Path2D2")]
 firingAngle = -0.5235987755982988
 
-[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" index="1" instance=ExtResource("16_uclwg")]
 position = Vector2(891, 793)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 firingAngle = 0.2617993877991494
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3" index="2"]
 position = Vector2(-104, 0)
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths" index="0"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy"]
-curve = SubResource("Curve2D_d86m7")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_c7pbv")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy"]
-curve = SubResource("Curve2D_as0xv")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy" index="1"]
+curve = SubResource("Curve2D_77l7m")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths" index="1"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy2"]
-curve = SubResource("Curve2D_4qcx6")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy2" index="0"]
+curve = SubResource("Curve2D_1rr3k")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy2"]
-curve = SubResource("Curve2D_v1e0a")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy2" index="1"]
+curve = SubResource("Curve2D_hsj5a")
 
-[node name="Checkpoint4" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint4" type="Node2D" parent="WorldMap/Checkpoints" index="4"]
 visible = false
 position = Vector2(772, 363)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint4"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint4" index="0"]
 position = Vector2(-364, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint4/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint4/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4" index="1"]
 position = Vector2(-104, 0)
 
-[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" index="0" instance=ExtResource("16_uclwg")]
 position = Vector2(952, -517)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy/Path2D"), NodePath("../../Paths/Enemy/Path2D2")]
 
-[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" index="1" instance=ExtResource("16_uclwg")]
 position = Vector2(891, 793)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
-[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" index="2" instance=ExtResource("15_w38ni")]
 position = Vector2(1826, 541)
 collision_mask = 8
 Behavior = 2
 Paths = [NodePath("../../Paths/Enemy3/Path2D")]
 
-[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" index="3" instance=ExtResource("15_w38ni")]
 position = Vector2(1835, -153)
 collision_mask = 8
 Behavior = 2
 Paths = [NodePath("../../Paths/Enemy4/Path2D")]
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4" index="2"]
 position = Vector2(-104, 0)
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths" index="0"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy"]
-curve = SubResource("Curve2D_wus38")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_w38ni")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy"]
-curve = SubResource("Curve2D_ielgn")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy" index="1"]
+curve = SubResource("Curve2D_uclwg")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths" index="1"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy2"]
-curve = SubResource("Curve2D_4qcx6")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy2" index="0"]
+curve = SubResource("Curve2D_1rr3k")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy2"]
-curve = SubResource("Curve2D_v1e0a")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy2" index="1"]
+curve = SubResource("Curve2D_hsj5a")
 
-[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths"]
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths" index="2"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy3"]
-curve = SubResource("Curve2D_qvmnn")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy3" index="0"]
+curve = SubResource("Curve2D_8x6gh")
 
-[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths"]
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths" index="3"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy4"]
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy4" index="0"]
 position = Vector2(-20, -376)
-curve = SubResource("Curve2D_sj4vb")
+curve = SubResource("Curve2D_442u8")
 
-[node name="Checkpoint5" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint5" type="Node2D" parent="WorldMap/Checkpoints" index="5"]
 visible = false
 position = Vector2(826, 363)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint5"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint5" index="0"]
 position = Vector2(-364, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint5/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint5/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5" index="1"]
 position = Vector2(-104, 0)
 
-[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" index="0" instance=ExtResource("15_w38ni")]
 position = Vector2(983, -485)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy/Path2D"), NodePath("../../Paths/Enemy/Path2D2")]
 rotationAngle = 0.17453292519943295
 
-[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" index="1" instance=ExtResource("15_w38ni")]
 position = Vector2(696, 755)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 rotationAngle = -0.17453292519943295
 
-[node name="Wild Axolotl" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" instance=ExtResource("17_8x6gh")]
+[node name="Wild Axolotl" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" index="2" instance=ExtResource("17_8x6gh")]
 position = Vector2(1781, -391)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy3/Path2D")]
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5" index="2"]
 position = Vector2(-104, 0)
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths" index="0"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy"]
-curve = SubResource("Curve2D_q1aj6")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_fxl23")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy"]
-curve = SubResource("Curve2D_e3ngr")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy" index="1"]
+curve = SubResource("Curve2D_xg5g8")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths" index="1"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy2"]
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy2" index="0"]
 position = Vector2(-212, -12)
-curve = SubResource("Curve2D_xdel3")
+curve = SubResource("Curve2D_p7b0h")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy2"]
-curve = SubResource("Curve2D_1unet")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy2" index="1"]
+curve = SubResource("Curve2D_2i07x")
 
-[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths"]
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths" index="2"]
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy3"]
-curve = SubResource("Curve2D_4rxjj")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy3" index="0"]
+curve = SubResource("Curve2D_g50tq")
 
-[node name="Checkpoint6" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint6" type="Node2D" parent="WorldMap/Checkpoints" index="6"]
 visible = false
 position = Vector2(789, 361)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint6"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint6" index="0"]
 position = Vector2(-260, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint6/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint6/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6" index="1"]
 
-[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="0" instance=ExtResource("15_w38ni")]
 position = Vector2(900, -400)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy/Path2D"), NodePath("../../Paths/Enemy/Path2D2")]
 
-[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="1" instance=ExtResource("15_w38ni")]
 position = Vector2(1000, -800)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
-[node name="PinkAxolotl4" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl4" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="2" instance=ExtResource("15_w38ni")]
 position = Vector2(1100, -1200)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy3/Path2D"), NodePath("../../Paths/Enemy3/Path2D2")]
 
-[node name="PinkAxolotl5" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl5" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="3" instance=ExtResource("15_w38ni")]
 position = Vector2(1200, -1600)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy4/Path2D"), NodePath("../../Paths/Enemy4/Path2D2")]
 
-[node name="PinkAxolotl6" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl6" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="4" instance=ExtResource("15_w38ni")]
 position = Vector2(1300, -2000)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy5/Path2D"), NodePath("../../Paths/Enemy5/Path2D2")]
 
-[node name="PinkAxolotl7" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl7" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="5" instance=ExtResource("15_w38ni")]
 position = Vector2(1400, -2400)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy6/Path2D"), NodePath("../../Paths/Enemy6/Path2D2")]
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6" index="2"]
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="0"]
 position = Vector2(300, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy"]
-curve = SubResource("Curve2D_w38ni")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_yegjp")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy"]
-curve = SubResource("Curve2D_uclwg")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy" index="1"]
+curve = SubResource("Curve2D_d86m7")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="1"]
 position = Vector2(400, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy2"]
-curve = SubResource("Curve2D_w38ni")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy2" index="0"]
+curve = SubResource("Curve2D_yegjp")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy2"]
-curve = SubResource("Curve2D_uclwg")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy2" index="1"]
+curve = SubResource("Curve2D_d86m7")
 
-[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths"]
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="2"]
 position = Vector2(500, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy3"]
-curve = SubResource("Curve2D_w38ni")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy3" index="0"]
+curve = SubResource("Curve2D_yegjp")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy3"]
-curve = SubResource("Curve2D_uclwg")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy3" index="1"]
+curve = SubResource("Curve2D_d86m7")
 
-[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths"]
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="3"]
 position = Vector2(600, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy4"]
-curve = SubResource("Curve2D_w38ni")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy4" index="0"]
+curve = SubResource("Curve2D_yegjp")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy4"]
-curve = SubResource("Curve2D_uclwg")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy4" index="1"]
+curve = SubResource("Curve2D_d86m7")
 
-[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths"]
+[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="4"]
 position = Vector2(700, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy5"]
-curve = SubResource("Curve2D_w38ni")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy5" index="0"]
+curve = SubResource("Curve2D_yegjp")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy5"]
-curve = SubResource("Curve2D_uclwg")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy5" index="1"]
+curve = SubResource("Curve2D_d86m7")
 
-[node name="Enemy6" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths"]
+[node name="Enemy6" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="5"]
 position = Vector2(800, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy6"]
-curve = SubResource("Curve2D_w38ni")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy6" index="0"]
+curve = SubResource("Curve2D_yegjp")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy6"]
-curve = SubResource("Curve2D_uclwg")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy6" index="1"]
+curve = SubResource("Curve2D_d86m7")
 
-[node name="Checkpoint7" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint7" type="Node2D" parent="WorldMap/Checkpoints" index="7"]
 visible = false
 position = Vector2(841, 356)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint7"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint7" index="0"]
 position = Vector2(-260, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint7/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint7/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7" index="1"]
 
-[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="0" instance=ExtResource("16_uclwg")]
 position = Vector2(758, -420)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy/Path2D"), NodePath("../../Paths/Enemy/Path2D2")]
 firingAngle = -0.2617993877991494
 
-[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="1" instance=ExtResource("16_uclwg")]
 position = Vector2(683, 786)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 firingAngle = 0.2199114857512854
 
-[node name="Gold Axolotl3" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl3" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="2" instance=ExtResource("16_uclwg")]
 position = Vector2(1226, -412)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy3/Path2D"), NodePath("../../Paths/Enemy3/Path2D2")]
 firingAngle = -0.2007128639793479
 
-[node name="Gold Axolotl4" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" instance=ExtResource("16_uclwg")]
+[node name="Gold Axolotl4" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="3" instance=ExtResource("16_uclwg")]
 position = Vector2(1384, 761)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy4/Path2D"), NodePath("../../Paths/Enemy4/Path2D2")]
 firingAngle = 0.2199114857512854
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7" index="2"]
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="0"]
 position = Vector2(444, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy"]
-curve = SubResource("Curve2D_yxjiu")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_4qcx6")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy"]
-curve = SubResource("Curve2D_qr58x")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy" index="1"]
+curve = SubResource("Curve2D_as0xv")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="1"]
 position = Vector2(544, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy2"]
-curve = SubResource("Curve2D_gha82")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy2" index="0"]
+curve = SubResource("Curve2D_v1e0a")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy2"]
-curve = SubResource("Curve2D_dihae")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy2" index="1"]
+curve = SubResource("Curve2D_ielgn")
 
-[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths"]
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="2"]
 position = Vector2(644, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy3"]
-curve = SubResource("Curve2D_3uvis")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy3" index="0"]
+curve = SubResource("Curve2D_wus38")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy3"]
-curve = SubResource("Curve2D_j7547")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy3" index="1"]
+curve = SubResource("Curve2D_qvmnn")
 
-[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths"]
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="3"]
 position = Vector2(744, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy4"]
-curve = SubResource("Curve2D_d3sl6")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy4" index="0"]
+curve = SubResource("Curve2D_sj4vb")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy4"]
-curve = SubResource("Curve2D_4iwfn")
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy4" index="1"]
+curve = SubResource("Curve2D_q1aj6")
 
-[node name="Checkpoint8" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint8" type="Node2D" parent="WorldMap/Checkpoints" index="8"]
 visible = false
 position = Vector2(745, 361)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint8"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint8" index="0"]
 position = Vector2(-191, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint8/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint8/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8" index="1"]
 position = Vector2(69, 0)
 
-[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint8/Enemies" instance=ExtResource("17_8x6gh")]
+[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint8/Enemies" index="0" instance=ExtResource("17_8x6gh")]
 position = Vector2(1083, -438)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy/Path2D")]
 firingRotatingSpeed = 20.0
 
-[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint8/Enemies" instance=ExtResource("17_8x6gh")]
+[node name="Gold Axolotl2" parent="WorldMap/Checkpoints/Checkpoint8/Enemies" index="1" instance=ExtResource("17_8x6gh")]
 position = Vector2(1642, 840)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy2/Path2D")]
 firingRotatingSpeed = -20.0
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8" index="2"]
 position = Vector2(69, 0)
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths" index="0"]
 position = Vector2(300, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy"]
-curve = SubResource("Curve2D_8x6gh")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_e3ngr")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths" index="1"]
 position = Vector2(400, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy2"]
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy2" index="0"]
 position = Vector2(-132, 389)
-curve = SubResource("Curve2D_442u8")
+curve = SubResource("Curve2D_1unet")
 
-[node name="Checkpoint9" type="Node2D" parent="WorldMap/Checkpoints"]
+[node name="Checkpoint9" type="Node2D" parent="WorldMap/Checkpoints" index="9"]
 position = Vector2(803, 361)
 script = ExtResource("12_2i07x")
 
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint9"]
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint9" index="0"]
 position = Vector2(-191, 34)
 collision_layer = 256
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint9/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint9/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0urlm")
 
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9"]
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9" index="1"]
 position = Vector2(69, 0)
 
-[node name="Wild Axolotl" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" instance=ExtResource("17_8x6gh")]
+[node name="Wild Axolotl" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="0" instance=ExtResource("17_8x6gh")]
 position = Vector2(2098, 75)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy/Path2D")]
 
-[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="1" instance=ExtResource("15_w38ni")]
 position = Vector2(597, 820)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
-[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="2" instance=ExtResource("15_w38ni")]
 position = Vector2(597, 1120)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
-[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="3" instance=ExtResource("15_w38ni")]
 position = Vector2(597, 1420)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
-[node name="PinkAxolotl4" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl4" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="4" instance=ExtResource("15_w38ni")]
 position = Vector2(597, 1720)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
-[node name="PinkAxolotl5" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" instance=ExtResource("15_w38ni")]
+[node name="PinkAxolotl5" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="5" instance=ExtResource("15_w38ni")]
 position = Vector2(597, 2020)
 collision_mask = 8
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9"]
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9" index="2"]
 position = Vector2(69, 0)
 
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths"]
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths" index="0"]
 position = Vector2(701, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy"]
-curve = SubResource("Curve2D_roty5")
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy" index="0"]
+curve = SubResource("Curve2D_xdel3")
 
-[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths"]
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths" index="1"]
 position = Vector2(801, 0)
 
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy2"]
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy2" index="0"]
 position = Vector2(-132, 389)
-curve = SubResource("Curve2D_7brrn")
+curve = SubResource("Curve2D_4rxjj")
 
-[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy2"]
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy2" index="1"]
 position = Vector2(-132, 389)
-curve = SubResource("Curve2D_6iv6h")
+curve = SubResource("Curve2D_yxjiu")
 
-[node name="Checkpoint10" type="Node2D" parent="WorldMap/Checkpoints"]
-position = Vector2(887, 361)
-script = ExtResource("12_2i07x")
-
-[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint10"]
-position = Vector2(-191, 34)
-collision_layer = 256
-collision_mask = 512
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint10/Area2D"]
-shape = SubResource("RectangleShape2D_4u7n5")
-
-[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10"]
-position = Vector2(69, 0)
-
-[node name="Luna" parent="WorldMap/Checkpoints/Checkpoint10/Enemies" instance=ExtResource("21_p7b0h")]
-position = Vector2(1849, -624)
-collision_mask = 8
-Paths = [NodePath("../../Paths/Enemy/Path2D")]
-
-[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10"]
-position = Vector2(69, 0)
-
-[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths"]
-position = Vector2(701, 0)
-
-[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths/Enemy"]
-curve = SubResource("Curve2D_2up5j")
-
-[node name="EndOfLine2" type="Area2D" parent="WorldMap/Checkpoints"]
-position = Vector2(1234, 16)
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("23_442u8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/EndOfLine2"]
-position = Vector2(-288, 325)
-shape = SubResource("RectangleShape2D_qflrp")
-
-[node name="EndOfLine" type="Area2D" parent="."]
-position = Vector2(212, 16)
-collision_layer = 512
-collision_mask = 256
-script = ExtResource("17_as0xv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EndOfLine"]
-position = Vector2(-274, 325)
-shape = SubResource("RectangleShape2D_qflrp")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("18_77l7m")]
-
-[connection signal="area_entered" from="WorldMap/Background/Back/Area2D" to="WorldMap/Background/Back/Area2D" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Back/Area2D2" to="WorldMap/Background/Back/Area2D2" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Back/Area2D3" to="WorldMap/Background/Back/Area2D3" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Mid/Area2D" to="WorldMap/Background/Mid/Area2D" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Mid/Area2D2" to="WorldMap/Background/Mid/Area2D2" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Mid/Area2D3" to="WorldMap/Background/Mid/Area2D3" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Front/Area2D" to="WorldMap/Background/Front/Area2D" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Front/Area2D2" to="WorldMap/Background/Front/Area2D2" method="_on_tile_area_entered"]
-[connection signal="area_entered" from="WorldMap/Background/Front/Area2D3" to="WorldMap/Background/Front/Area2D3" method="_on_tile_area_entered"]
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint/Area2D" to="WorldMap/Checkpoints/Checkpoint" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint2/Area2D" to="WorldMap/Checkpoints/Checkpoint2" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint3/Area2D" to="WorldMap/Checkpoints/Checkpoint3" method="_on_area_2d_area_entered"]
@@ -1693,5 +881,3 @@ shape = SubResource("RectangleShape2D_qflrp")
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint7/Area2D" to="WorldMap/Checkpoints/Checkpoint7" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint8/Area2D" to="WorldMap/Checkpoints/Checkpoint8" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint9/Area2D" to="WorldMap/Checkpoints/Checkpoint9" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint10/Area2D" to="WorldMap/Checkpoints/Checkpoint10" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="WorldMap/Checkpoints/EndOfLine2" to="WorldMap/Checkpoints/EndOfLine2" method="_on_area_2d_area_entered"]

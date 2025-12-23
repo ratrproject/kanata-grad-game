@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5tkq6fllf302"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_xolgg"]
+[ext_resource type="Texture2D" uid="uid://cf6e5ngy6j6jr" path="res://Sprites/watame.png" id="2_r4qid"]
+
+[node name="Enemy" instance=ExtResource("1_xolgg")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(2, 16)
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_r4qid")
+vframes = 2
