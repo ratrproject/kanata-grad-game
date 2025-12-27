@@ -55,7 +55,6 @@ hframes = 4
 vframes = 2
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-rotation = -0.5235988
 script = ExtResource("3_yvep8")
 active = false
 auto_pattern_id = "8"

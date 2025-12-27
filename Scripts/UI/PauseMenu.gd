@@ -7,7 +7,7 @@ func _ready():
 	var viewport : Viewport = get_viewport()
 	viewport.gui_focus_changed.connect(_gui_focus_change)
 	
-	var buttons = $MarginContainer/VBoxContainer.get_children()
+	var buttons = $MarginContainer/Pause.get_children()
 	buttons = buttons.filter(func(element): return element.visible and !(element is Label))
 	for i in buttons.size():
 		var above = (i-1) % buttons.size()
@@ -25,9 +25,9 @@ func open():
 	if visible == false:
 		visible = true
 		
-	$MarginContainer/VBoxContainer.visible = true
-	$MarginContainer/VBoxContainer2.visible = false
-	$MarginContainer/VBoxContainer/Button2.grab_focus()
+	$MarginContainer/Pause.visible = true
+	$MarginContainer/Settings.visible = false
+	$MarginContainer/Pause/VBoxContainer/Button2.grab_focus()
 	
 func close():
 	if visible == true:
@@ -50,13 +50,13 @@ func _on_restart_button_pressed():
 	get_tree().call_group("Main", "restart_level")
 
 func _on_settings_on_pressed():
-	$MarginContainer/VBoxContainer.visible = false
-	$MarginContainer/VBoxContainer2.visible = true
+	$MarginContainer/Pause.visible = false
+	$MarginContainer/Settings.visible = true
 	$AcceptSFX.play()
 
 func _on_settings_on_back_pressed():
-	$MarginContainer/VBoxContainer.visible = true
-	$MarginContainer/VBoxContainer2.visible = false
+	$MarginContainer/Pause.visible = true
+	$MarginContainer/Settings.visible = false
 	$BackSFX.play()
 	
 	

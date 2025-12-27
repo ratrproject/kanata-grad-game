@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm4uojndkjn3q"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_52acr"]
+[ext_resource type="Texture2D" uid="uid://ddnfklw5g74ib" path="res://Sprites/Bibi.png" id="2_52acr"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_daijf"]
+
+[node name="Bibi" instance=ExtResource("1_52acr")]
+MaxHealth = 20.0
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(13, 5)
+texture = ExtResource("2_52acr")
+
+[node name="SpawnPoint2" type="Node2D" parent="." index="6"]
+rotation = -3.1415927
+script = ExtResource("3_daijf")
+active = false
+auto_pattern_id = "17"
+shared_area_name = "1"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")
+
+[node name="SpawnPoint3" type="Node2D" parent="." index="7"]
+rotation = -3.1415927
+script = ExtResource("3_daijf")
+active = false
+auto_pattern_id = "18"
+shared_area_name = "1"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 1.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")
+
+[node name="SpawnPoint4" type="Node2D" parent="." index="8"]
+rotation = -3.1415927
+script = ExtResource("3_daijf")
+active = false
+auto_pattern_id = "19"
+shared_area_name = "1"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 2.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

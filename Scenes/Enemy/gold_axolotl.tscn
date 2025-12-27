@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_02x5j"]
 
 [node name="Gold Axolotl" instance=ExtResource("1_7h7p6")]
+MaxHealth = 12.0
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_oqdtg")

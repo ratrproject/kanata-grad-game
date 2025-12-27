@@ -9,7 +9,7 @@ var MainMenu = preload("res://Scenes/main_menu.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_game()
-	load_main_menu()
+	#load_main_menu()
 
 func load_level(level, changeTrack = true):
 	current_level = level
@@ -26,7 +26,11 @@ func load_level(level, changeTrack = true):
 	if (changeTrack || $Jukebox/MenuBGM.playing):
 		for n in $Jukebox.get_children():
 			n.stop()
-		$Jukebox/LevelBGM.play()
+			
+		if level == 6:
+			$Jukebox/LevelBGM2.play()
+		else:
+			$Jukebox/LevelBGM.play()
 
 func restart_level():
 	load_level(current_level, false)
@@ -36,23 +40,28 @@ func load_main_menu(as_credits = false):
 		$Node2D.remove_child(n)
 		n.queue_free()
 		
+	get_tree().paused = false
 	Spawning.reset_bullets()
 	
 	var menu = MainMenu.instantiate()
 	$Node2D.add_child(menu)
 	
-	for n in $Jukebox.get_children():
-		n.stop()
-	$Jukebox/MenuBGM.play()
+	if as_credits:
+		menu.open_credits()
+	
+	if !$Jukebox/MenuBGM.playing:
+		for n in $Jukebox.get_children():
+			n.stop()
+		$Jukebox/MenuBGM.play()
 	
 func exit_level():
 	load_main_menu()
 
 func next_level():
-	if current_level >= 12:
+	if current_level >= 6:
 		load_main_menu(true)
 	else:
-		load_level(current_level + 1)
+		load_level(current_level + 1, current_level == 5)
 
 func save():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)

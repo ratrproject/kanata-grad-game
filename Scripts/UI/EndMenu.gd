@@ -16,20 +16,29 @@ func _ready():
 		buttons[i].focus_neighbor_top = buttons[above].get_path()
 		buttons[i].focus_neighbor_bottom = buttons[below].get_path()
 	
+func change_texture(path):
+	var new_texture = load(path)
+	$TextureRect3.texture = new_texture
+	
+func alt_level_complete():
+	var new_texture = load("res://Sprites/UI/Menu/LevelCompleteAlt.png")
+	$TextureRect2.texture = new_texture
+	
 func update_time(time):
 	var minutes = int(time / 60)
 	var seconds = int(time) % 60
 	$MarginContainer/VBoxContainer/VBoxContainer/Label3.text = "Clear Time: %02d:%02d" % [minutes, seconds]
-
-	$AudioStreamPlayer2D4.play()
 			
 
 func open():
+	$TextureRect2.visible = false
+	$TextureRect3.visible = false
+	$MarginContainer.visible = false
 	if visible == false:
 		visible = true
 		
+	$AnimationPlayer.play("Open")
 	$MarginContainer/VBoxContainer/Button2.grab_focus()
-	
 	get_tree().call_group("Main", "_on_victory")
 	
 func close():

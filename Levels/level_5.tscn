@@ -1,0 +1,930 @@
+[gd_scene load_steps=50 format=3 uid="uid://bdqp51i0brosj"]
+
+[ext_resource type="PackedScene" uid="uid://dn3aplp4ldeed" path="res://Levels/level_base.tscn" id="1_pses1"]
+[ext_resource type="Texture2D" uid="uid://dv2wbutww6mpt" path="res://Sprites/Background/Level5/background-3.png" id="2_u0s3x"]
+[ext_resource type="Texture2D" uid="uid://ccxalgpa6n63f" path="res://Sprites/Background/Level5/background-2.png" id="3_ki7po"]
+[ext_resource type="Texture2D" uid="uid://cavc44ys50otc" path="res://Sprites/Background/Level5/background-1.png" id="4_321yd"]
+[ext_resource type="Script" uid="uid://b17stwfq4t7bp" path="res://Scripts/Map/Checkpoint.gd" id="5_1xify"]
+[ext_resource type="PackedScene" uid="uid://dgm2q3p3qsdqk" path="res://Scenes/Enemy/coco.tscn" id="6_kgnlk"]
+[ext_resource type="PackedScene" uid="uid://bhlljhrikhedf" path="res://Scenes/Enemy/coco_fan.tscn" id="6_rpnhq"]
+[ext_resource type="PackedScene" uid="uid://b46aqpgpgeavs" path="res://Scenes/State/coco_state.tscn" id="7_1xify"]
+[ext_resource type="PackedScene" uid="uid://cj6q1a2jjvrdu" path="res://Scenes/Enemy/pink_axolotl.tscn" id="7_hu0ol"]
+[ext_resource type="PackedScene" uid="uid://c22hk245n7t68" path="res://Scenes/State/path_state.tscn" id="7_kgnlk"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="7_xagau"]
+[ext_resource type="PackedScene" uid="uid://dtmbejt2x5fyc" path="res://Scenes/Enemy/lu_knight.tscn" id="8_hu0ol"]
+[ext_resource type="PackedScene" uid="uid://bm4uojndkjn3q" path="res://Scenes/Enemy/bibi.tscn" id="9_m47b0"]
+[ext_resource type="PackedScene" uid="uid://qjk1rds4cwpa" path="res://Scenes/Enemy/wild_axolotl.tscn" id="10_x7gsr"]
+[ext_resource type="PackedScene" uid="uid://bwn7mjdkcp0s7" path="res://Scenes/Enemy/watamate.tscn" id="11_25373"]
+[ext_resource type="PackedScene" uid="uid://cvvbsvcyite2a" path="res://Scenes/Enemy/gold_axolotl.tscn" id="12_vybpl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m47b0"]
+size = Vector2(20, 1000)
+
+[sub_resource type="Curve2D" id="Curve2D_x7gsr"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(-54.918396, 635.9905, 54.918396, -635.9905, 1271, 463, 0, 0, 0, 0, 486, 488)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_uk1uv"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1286, 375, 0, 0, 0, 0, 856, 70)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_hu0ol"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 470, -953, 0, 0, 0, 0, 846, -554)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_m47b0"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1177, 445, 0, 0, 0, 0, 842, -3)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_25373"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 368, -900, 0, 0, 0, 0, 399, -657)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_vybpl"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 669, -915, 0, 0, 0, 0, 703, -501)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_f6crn"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 565, -84, 0, 0, 0, 0, 484, -381)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_k35fw"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 869, 550, 0, 0, 0, 0, 742, 9)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_c02se"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1038, -863, 0, 0, 0, 0, 978, -190)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_1537k"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 878, -974, 0, 0, 0, 0, 682, -601)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_5o5kr"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1144, 576, 0, 0, 0, 0, 937, 83)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_gmfyt"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1259, -815, -9.663061, -468.65848, 9.663061, 468.65848, 939, -317)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_2jyfw"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 562, -950, 0, 0, 0, 0, 696, -699)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_308mu"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 697, -699, 0, 0, 0, 0, 711, 131)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xtidu"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 593, 493, 0, 0, 0, 0, 707, 152)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_s76kx"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 709, 135, 0, 0, 0, 0, 700, -703)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_kv2it"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1248, 503, 0, 0, 0, 0, 951, 157)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_qjtqt"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1114, -965, 0, 0, 0, 0, 952, -596)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_rrvfs"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 651, -921, 0, 0, 0, 0, 682, -601)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_52aqo"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 652, 472, 0, 0, 0, 0, 678, 86)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_y6pe4"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 744, -987, 0, 0, 0, 0, 632, -610)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_rbasm"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1363, -6, 0, 0, 0, 0, 920, -276)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_kw17g"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1307, 87, 0, 0, 0, 0, 918, -51)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_4ucso"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 621, 493, 0, 0, 0, 0, 596, 115)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_rgdty"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 878, -974, 0, 0, 0, 0, 279, -263)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_b2283"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1103, -578, 0, 0, 0, 0, 566, -576)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_hf4pc"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1103, -578, 0, 0, 0, 0, 836, -841)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytgun"]
+size = Vector2(20, 1000)
+
+[sub_resource type="Curve2D" id="Curve2D_rpnhq"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 285, 1199, 688.5209, -214.5733, -688.5209, 214.5733, 385, 112)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xagau"]
+bake_interval = 40.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 9, -40, 0, 0, 0, 0, -151, -476)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_1xify"]
+bake_interval = 40.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 3, 0, 0, 0, 0, -184, 268)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_kgnlk"]
+bake_interval = 40.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -7, 18, 0, 0, 0, 0, -990, 14)
+}
+point_count = 2
+
+[node name="GameMain" instance=ExtResource("1_pses1")]
+
+[node name="Player" parent="." index="0"]
+LunaSupportUnlocked = true
+WatameSupportUnlocked = true
+TowaSupportUnlocked = true
+
+[node name="Background" parent="WorldMap" index="0"]
+visible = false
+
+[node name="Sprite2D" parent="WorldMap/Background/Back/Area2D" index="0"]
+texture = ExtResource("2_u0s3x")
+
+[node name="Sprite2D" parent="WorldMap/Background/Back/Area2D2" index="0"]
+texture = ExtResource("2_u0s3x")
+
+[node name="Sprite2D" parent="WorldMap/Background/Back/Area2D3" index="0"]
+texture = ExtResource("2_u0s3x")
+
+[node name="Clouds" parent="WorldMap/Background/Back" index="3"]
+customColor = true
+colorMin = Color(0.07284262, 0.07284265, 0.07284256, 1)
+colorMax = Color(0.24128959, 0.11939112, 0.10199364, 1)
+
+[node name="Sprite2D" parent="WorldMap/Background/Mid/Area2D" index="0"]
+texture = ExtResource("3_ki7po")
+
+[node name="Sprite2D" parent="WorldMap/Background/Mid/Area2D2" index="0"]
+texture = ExtResource("3_ki7po")
+
+[node name="Sprite2D" parent="WorldMap/Background/Mid/Area2D3" index="0"]
+texture = ExtResource("3_ki7po")
+
+[node name="Sprite2D" parent="WorldMap/Background/Front/Area2D" index="0"]
+texture = ExtResource("4_321yd")
+
+[node name="Sprite2D" parent="WorldMap/Background/Front/Area2D2" index="0"]
+texture = ExtResource("4_321yd")
+
+[node name="Sprite2D" parent="WorldMap/Background/Front/Area2D3" index="0"]
+texture = ExtResource("4_321yd")
+
+[node name="Checkpoint" type="Node2D" parent="WorldMap/Checkpoints" index="1"]
+position = Vector2(500, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint" index="1"]
+position = Vector2(-104, 0)
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint/Enemies" index="0" instance=ExtResource("6_rpnhq")]
+position = Vector2(1956, -22)
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint/Enemies" index="1" instance=ExtResource("7_hu0ol")]
+position = Vector2(1788, 784)
+Behavior = 2
+Paths = [NodePath("../../Paths/Enemy3/Path2D")]
+WanderRadius = 150.0
+firingAngle = 0.3490658503988659
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy2" index="0"]
+position = Vector2(312, -487)
+curve = SubResource("Curve2D_x7gsr")
+
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy3" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_uk1uv")
+
+[node name="Checkpoint2" type="Node2D" parent="WorldMap/Checkpoints" index="2"]
+visible = false
+position = Vector2(538, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint2" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint2/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2" index="1"]
+position = Vector2(-104, 0)
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" index="0" instance=ExtResource("6_rpnhq")]
+position = Vector2(941, -602)
+Paths = [NodePath("../../Paths/Enemy/Path2D")]
+
+[node name="CocoFan2" parent="WorldMap/Checkpoints/Checkpoint2/Enemies" index="1" instance=ExtResource("6_rpnhq")]
+position = Vector2(1671, 896)
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_hu0ol")
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint2/Paths/Enemy2" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_m47b0")
+
+[node name="Checkpoint3" type="Node2D" parent="WorldMap/Checkpoints" index="3"]
+visible = false
+position = Vector2(605, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint3" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint3/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3" index="1"]
+position = Vector2(-104, 0)
+
+[node name="PinkAxolotl" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" index="0" instance=ExtResource("7_hu0ol")]
+position = Vector2(850, -535)
+Paths = [NodePath("../../Paths/Enemy/Path2D")]
+
+[node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" index="1" instance=ExtResource("7_hu0ol")]
+position = Vector2(1135, -565)
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+
+[node name="PinkAxolotl3" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" index="2" instance=ExtResource("7_hu0ol")]
+position = Vector2(1139, 923)
+Paths = [NodePath("../../Paths/Enemy3/Path2D")]
+EntrySpeed = 800.0
+
+[node name="PinkAxolotl4" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" index="3" instance=ExtResource("7_hu0ol")]
+position = Vector2(1326, 995)
+Paths = [NodePath("../../Paths/Enemy4/Path2D")]
+EntrySpeed = 800.0
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint3/Enemies" index="4" instance=ExtResource("6_rpnhq")]
+position = Vector2(1533, -515)
+Paths = [NodePath("../../Paths/Enemy5/Path2D")]
+EntrySpeed = 800.0
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy" index="0"]
+position = Vector2(105, 397)
+curve = SubResource("Curve2D_25373")
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy2" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_vybpl")
+
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths" index="2"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy3" index="0"]
+position = Vector2(167, 976)
+curve = SubResource("Curve2D_f6crn")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths" index="3"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy4" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_k35fw")
+
+[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths" index="4"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint3/Paths/Enemy5" index="0"]
+position = Vector2(123, 392)
+curve = SubResource("Curve2D_c02se")
+
+[node name="Checkpoint4" type="Node2D" parent="WorldMap/Checkpoints" index="4"]
+visible = false
+position = Vector2(626, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint4" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint4/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4" index="1"]
+position = Vector2(-104, 0)
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" index="0" instance=ExtResource("6_rpnhq")]
+position = Vector2(1391, -612)
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+WanderRadius = 200.0
+
+[node name="CocoFan2" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" index="1" instance=ExtResource("6_rpnhq")]
+position = Vector2(1653, 1028)
+Paths = [NodePath("../../Paths/Enemy4/Path2D")]
+WanderRadius = 200.0
+
+[node name="LuKnight" parent="WorldMap/Checkpoints/Checkpoint4/Enemies" index="2" instance=ExtResource("8_hu0ol")]
+position = Vector2(1852, -419)
+Paths = [NodePath("../../Paths/Enemy5/Path2D")]
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy2" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_1537k")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy4" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_5o5kr")
+
+[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths" index="2"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint4/Paths/Enemy5" index="0"]
+position = Vector2(123, 392)
+curve = SubResource("Curve2D_gmfyt")
+
+[node name="Checkpoint5" type="Node2D" parent="WorldMap/Checkpoints" index="5"]
+position = Vector2(671, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint5" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint5/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5" index="1"]
+position = Vector2(-104, 0)
+
+[node name="Bibi2" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" index="0" instance=ExtResource("9_m47b0")]
+position = Vector2(1641, 1018)
+Paths = [NodePath("../../Paths/Enemy4/Path2D")]
+
+[node name="Bibi" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" index="1" instance=ExtResource("9_m47b0")]
+position = Vector2(1846, -441)
+Paths = [NodePath("../../Paths/Enemy5/Path2D")]
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" index="2" instance=ExtResource("6_rpnhq")]
+position = Vector2(1391, -612)
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+WanderRadius = 200.0
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy2" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_1537k")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy4" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_5o5kr")
+
+[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths" index="2"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint5/Paths/Enemy5" index="0"]
+position = Vector2(123, 392)
+curve = SubResource("Curve2D_gmfyt")
+
+[node name="Checkpoint6" type="Node2D" parent="WorldMap/Checkpoints" index="6"]
+visible = false
+position = Vector2(744, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint6" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint6/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6" index="1"]
+position = Vector2(-104, 0)
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="0" instance=ExtResource("6_rpnhq")]
+position = Vector2(1032, -566)
+Behavior = 1
+Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
+MainSpeed = 50.0
+WanderRadius = 200.0
+
+[node name="CocoFan2" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="1" instance=ExtResource("6_rpnhq")]
+position = Vector2(1061, 875)
+Behavior = 1
+Paths = [NodePath("../../Paths/Enemy4/Path2D"), NodePath("../../Paths/Enemy4/Path2D2")]
+MainSpeed = 50.0
+WanderRadius = 200.0
+
+[node name="Wild Axolotl" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="2" instance=ExtResource("10_x7gsr")]
+position = Vector2(1596, -564)
+Paths = [NodePath("../../Paths/Enemy6/Path2D")]
+firingRotatingSpeed = 20.0
+
+[node name="Wild Axolotl2" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="3" instance=ExtResource("10_x7gsr")]
+position = Vector2(1725, 890)
+Paths = [NodePath("../../Paths/Enemy5/Path2D")]
+firingRotatingSpeed = -20.0
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy2" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_2jyfw")
+
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy2" index="1"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_308mu")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy4" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_xtidu")
+
+[node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy4" index="1"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_s76kx")
+
+[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="2"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy5" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_kv2it")
+
+[node name="Enemy6" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths" index="3"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint6/Paths/Enemy6" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_qjtqt")
+
+[node name="Checkpoint7" type="Node2D" parent="WorldMap/Checkpoints" index="7"]
+visible = false
+position = Vector2(810, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint7" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint7/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7" index="1"]
+position = Vector2(-104, 0)
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="0" instance=ExtResource("6_rpnhq")]
+position = Vector2(1028, -548)
+Behavior = 2
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+MainSpeed = 50.0
+WanderRadius = 200.0
+
+[node name="CocoFan2" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="1" instance=ExtResource("6_rpnhq")]
+position = Vector2(1024, 916)
+Behavior = 2
+Paths = [NodePath("../../Paths/Enemy3/Path2D")]
+MainSpeed = 50.0
+WanderRadius = 200.0
+
+[node name="Bibi" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="2" instance=ExtResource("9_m47b0")]
+position = Vector2(1647, 1032)
+Paths = [NodePath("../../Paths/Enemy4/Path2D")]
+
+[node name="Watamate" parent="WorldMap/Checkpoints/Checkpoint7/Enemies" index="3" instance=ExtResource("11_25373")]
+position = Vector2(1830, -596)
+Paths = [NodePath("../../Paths/Enemy5/Path2D")]
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy2" index="0"]
+position = Vector2(-11, 530)
+curve = SubResource("Curve2D_rrvfs")
+
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy3" index="0"]
+position = Vector2(-11, 406)
+curve = SubResource("Curve2D_52aqo")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="2"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy4" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_5o5kr")
+
+[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths" index="3"]
+position = Vector2(387, -167)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint7/Paths/Enemy5" index="0"]
+position = Vector2(123, 392)
+curve = SubResource("Curve2D_gmfyt")
+
+[node name="Checkpoint8" type="Node2D" parent="WorldMap/Checkpoints" index="8"]
+position = Vector2(885, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint8" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint8/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8" index="1"]
+position = Vector2(-104, 0)
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint8/Enemies" index="0" instance=ExtResource("6_rpnhq")]
+position = Vector2(1218, -616)
+Paths = [NodePath("../../Paths/Enemy/Path2D")]
+WanderRadius = 200.0
+
+[node name="CocoFan2" parent="WorldMap/Checkpoints/Checkpoint8/Enemies" index="1" instance=ExtResource("6_rpnhq")]
+position = Vector2(1926, 431)
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+WanderRadius = 200.0
+
+[node name="CocoFan4" parent="WorldMap/Checkpoints/Checkpoint8/Enemies" index="2" instance=ExtResource("6_rpnhq")]
+position = Vector2(1141, 922)
+Paths = [NodePath("../../Paths/Enemy4/Path2D")]
+WanderRadius = 200.0
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy" index="0"]
+position = Vector2(86, 409)
+curve = SubResource("Curve2D_y6pe4")
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy2" index="0"]
+position = Vector2(128, 405)
+curve = SubResource("Curve2D_rbasm")
+
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths" index="2"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy3" index="0"]
+position = Vector2(128, 405)
+curve = SubResource("Curve2D_kw17g")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths" index="3"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint8/Paths/Enemy4" index="0"]
+position = Vector2(128, 405)
+curve = SubResource("Curve2D_4ucso")
+
+[node name="Checkpoint9" type="Node2D" parent="WorldMap/Checkpoints" index="9"]
+visible = false
+position = Vector2(965, 350)
+script = ExtResource("5_1xify")
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint9" index="0"]
+position = Vector2(-364, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint9/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_m47b0")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9" index="1"]
+position = Vector2(-104, 0)
+
+[node name="LuKnight" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="0" instance=ExtResource("8_hu0ol")]
+position = Vector2(1561, -562)
+Behavior = 2
+Paths = [NodePath("../../Paths/Enemy/Path2D")]
+WanderRadius = 300.0
+
+[node name="Bibi" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="1" instance=ExtResource("9_m47b0")]
+position = Vector2(1838, -144)
+Paths = [NodePath("../../Paths/Enemy2/Path2D")]
+
+[node name="Watamate" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="2" instance=ExtResource("11_25373")]
+position = Vector2(1857, 451)
+Paths = [NodePath("../../Paths/Enemy4/Path2D")]
+
+[node name="CocoFan" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="3" instance=ExtResource("6_rpnhq")]
+position = Vector2(1876, 186)
+Paths = [NodePath("../../Paths/Enemy3/Path2D")]
+
+[node name="Gold Axolotl" parent="WorldMap/Checkpoints/Checkpoint9/Enemies" index="4" instance=ExtResource("12_vybpl")]
+position = Vector2(1253, 965)
+Paths = [NodePath("../../Paths/Enemy5/Path2D")]
+firingAngle = 0.3490658503988659
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9" index="2"]
+position = Vector2(-104, 0)
+
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths" index="0"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy" index="0"]
+position = Vector2(288, 437)
+curve = SubResource("Curve2D_rgdty")
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths" index="1"]
+position = Vector2(387, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy2" index="0"]
+position = Vector2(288, 437)
+curve = SubResource("Curve2D_b2283")
+
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths" index="2"]
+position = Vector2(387, 303)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy3" index="0"]
+position = Vector2(288, 437)
+curve = SubResource("Curve2D_b2283")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths" index="3"]
+position = Vector2(387, 574)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy4" index="0"]
+position = Vector2(288, 437)
+curve = SubResource("Curve2D_b2283")
+
+[node name="Enemy5" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths" index="4"]
+position = Vector2(387, 574)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy5" index="0"]
+position = Vector2(-237, 948)
+curve = SubResource("Curve2D_hf4pc")
+
+[node name="Checkpoint10" type="Node2D" parent="WorldMap/Checkpoints" index="10"]
+visible = false
+position = Vector2(920, 361)
+script = ExtResource("5_1xify")
+finalCheckpoint = true
+
+[node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint10" index="0"]
+position = Vector2(-191, 34)
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldMap/Checkpoints/Checkpoint10/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_ytgun")
+
+[node name="Enemies" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10" index="1"]
+position = Vector2(69, 0)
+
+[node name="Coco" parent="WorldMap/Checkpoints/Checkpoint10/Enemies" index="0" instance=ExtResource("6_kgnlk")]
+position = Vector2(1036, 1258)
+Behavior = 3
+States = [NodePath("PathState"), NodePath("CocoState")]
+
+[node name="SpawnPoint" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10/Enemies/Coco" index="0"]
+position = Vector2(-123, 4)
+rotation = 3.1415927
+script = ExtResource("7_xagau")
+active = false
+auto_pattern_id = "16"
+shared_area_name = "1"
+rotating_speed = 0.524
+rotating_angle_limit = true
+rotating_angle = 1.5999999999999943
+rotating_angle_default = 3.0999999999999943
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")
+
+[node name="PathState" parent="WorldMap/Checkpoints/Checkpoint10/Enemies/Coco" index="7" instance=ExtResource("7_kgnlk")]
+move_speed = 500
+patrol_path = NodePath("../../../Paths/Enemy/Path2D")
+
+[node name="CocoState" parent="WorldMap/Checkpoints/Checkpoint10/Enemies/Coco" index="8" instance=ExtResource("7_1xify")]
+SpawnPoints = [NodePath("../../../Paths/Enemy2/Path2D"), NodePath("../../../Paths/Enemy3/Path2D"), NodePath("../../../Paths/Enemy4/Path2D")]
+FiringNodes = [NodePath("../SpawnPoint")]
+
+[node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10" index="2"]
+position = Vector2(69, 0)
+
+[node name="Enemy" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths" index="0"]
+position = Vector2(701, 0)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths/Enemy" index="0"]
+position = Vector2(177, 0)
+curve = SubResource("Curve2D_rpnhq")
+
+[node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths" index="1"]
+position = Vector2(477, 643)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths/Enemy2" index="0"]
+position = Vector2(638, 296)
+curve = SubResource("Curve2D_xagau")
+
+[node name="Enemy3" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths" index="2"]
+position = Vector2(477, 711)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths/Enemy3" index="0"]
+position = Vector2(720, -1263)
+curve = SubResource("Curve2D_1xify")
+
+[node name="Enemy4" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths" index="3"]
+position = Vector2(477, 582)
+
+[node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths/Enemy4" index="0"]
+position = Vector2(1475, -438)
+curve = SubResource("Curve2D_kgnlk")
+
+[node name="CanvasLayer" parent="." index="6"]
+alt_image_path = "res://Sprites/Ending/Ending5.png"
+alt_level_complete = true
+
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint/Area2D" to="WorldMap/Checkpoints/Checkpoint" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint2/Area2D" to="WorldMap/Checkpoints/Checkpoint2" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint3/Area2D" to="WorldMap/Checkpoints/Checkpoint3" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint4/Area2D" to="WorldMap/Checkpoints/Checkpoint4" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint5/Area2D" to="WorldMap/Checkpoints/Checkpoint5" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint6/Area2D" to="WorldMap/Checkpoints/Checkpoint6" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint7/Area2D" to="WorldMap/Checkpoints/Checkpoint7" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint8/Area2D" to="WorldMap/Checkpoints/Checkpoint8" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint9/Area2D" to="WorldMap/Checkpoints/Checkpoint9" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint10/Area2D" to="WorldMap/Checkpoints/Checkpoint10" method="_on_area_2d_area_entered"]

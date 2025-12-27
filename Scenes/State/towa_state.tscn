@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://n3w43jijqcps"]
+
+[ext_resource type="Script" uid="uid://be0gddtnwsdi1" path="res://Scripts/State/TowaState.gd" id="1_ywovb"]
+
+[node name="TowaState" type="Node2D"]
+script = ExtResource("1_ywovb")
+move_speed = 200.0
+move_range = 300.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.25
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="fire"]

@@ -43,6 +43,7 @@ size_flags_vertical = 4
 focus_neighbor_top = NodePath("../FullScreenCheck")
 focus_neighbor_bottom = NodePath("../MusicSlider")
 step = 10.0
+value = 100.0
 
 [node name="MusicLabel" type="Label" parent="GridContainer"]
 custom_minimum_size = Vector2(500, 0)
@@ -57,6 +58,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../SFXSlider")
 step = 10.0
+value = 100.0
 
 [node name="VoiceLabel" type="Label" parent="GridContainer"]
 custom_minimum_size = Vector2(500, 0)
@@ -71,6 +73,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../SFXSlider")
 step = 10.0
+value = 100.0
 
 [node name="BackButton" type="Button" parent="."]
 custom_minimum_size = Vector2(400, 80)

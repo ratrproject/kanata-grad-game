@@ -1,9 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhlljhrikhedf"]
+[gd_scene load_steps=4 format=3 uid="uid://bhlljhrikhedf"]
 
 [ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_uyj4o"]
 [ext_resource type="Texture2D" uid="uid://c8k1667vruxuv" path="res://Sprites/coco fan.png" id="2_mc8id"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_mc8id"]
 
 [node name="CocoFan" instance=ExtResource("1_uyj4o")]
+MaxHealth = 30.0
+firingRotatingSpeed = 30.0
+rotationAngle = 1.0471975511965976
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_mc8id")
+
+[node name="SpawnPoint" type="Node2D" parent="." index="6"]
+rotation = 3.1415927
+script = ExtResource("3_mc8id")
+active = false
+auto_pattern_id = "16"
+shared_area_name = "1"
+rotating_speed = 0.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 100
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

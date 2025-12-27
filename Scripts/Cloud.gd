@@ -39,6 +39,12 @@ func _ready():
 	var color_rang = randf_range(0.8, 1.1)
 	modulate = Color(color_rang,color_rang,color_rang)
 
+func change_color(min : Color, max: Color):
+	var color_r = randf_range(min.r, max.r)
+	var color_g = randf_range(min.g, max.g)
+	var color_b = randf_range(min.b, max.b)
+	modulate = Color(color_r,color_g,color_b)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = xDir * speed	

@@ -1,15 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://bd5y6m0ajxibe"]
+[gd_scene load_steps=32 format=3 uid="uid://bd5y6m0ajxibe"]
 
 [ext_resource type="Script" uid="uid://dp8oj6l3c3dlu" path="res://Scripts/UI/MainMenu.gd" id="1_ttq8b"]
+[ext_resource type="Texture2D" uid="uid://t0wtbr0f6c34" path="res://Sprites/UI/Menu/LevelSelect1.png" id="2_opfnp"]
 [ext_resource type="Script" uid="uid://6aadsg02r2xv" path="res://Scenes/LevelSelectButton.gd" id="2_r6jal"]
+[ext_resource type="Texture2D" uid="uid://vyiexycqiph4" path="res://Sprites/UI/Menu/MainMenu.png" id="2_t1dhk"]
 [ext_resource type="Script" uid="uid://d3f8ne2q7xbay" path="res://Scenes/LevelDetails.gd" id="3_eit8o"]
 [ext_resource type="PackedScene" uid="uid://c7d1i25b3khwr" path="res://Scenes/settings.tscn" id="3_ixxew"]
+[ext_resource type="Texture2D" uid="uid://c3jda7dsjdrvw" path="res://Sprites/UI/Menu/LevelSelect2.png" id="3_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://dd6roqjsidh0s" path="res://Sprites/UI/Menu/LevelSelect3.png" id="4_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://b1rgecy3evsc6" path="res://Sprites/UI/Menu/LevelSelect4.png" id="5_5egv6"]
+[ext_resource type="Texture2D" uid="uid://cgccnj10yjwi6" path="res://Sprites/UI/Menu/Credits.png" id="5_n45e2"]
+[ext_resource type="Texture2D" uid="uid://bd6ui1p0jqjfx" path="res://Sprites/UI/Menu/LevelSelect5.png" id="6_vtepg"]
+[ext_resource type="Texture2D" uid="uid://d2d3a2pr4vya8" path="res://Sprites/UI/Menu/LevelSelect6.png" id="7_8dnnj"]
+[ext_resource type="Texture2D" uid="uid://yjd0iesygfm7" path="res://Sprites/UI/Menu/Settings.png" id="11_vtepg"]
+[ext_resource type="Texture2D" uid="uid://caq8p7adhowr1" path="res://Sprites/UI/Menu/Title.png" id="13_5egv6"]
+[ext_resource type="AudioStream" uid="uid://c7xe621eif8ew" path="res://SFX/sfx_ui_cursor.ogg" id="15_wyh8j"]
+[ext_resource type="AudioStream" uid="uid://bbty080kanomy" path="res://SFX/sfx_ui_confirm.ogg" id="16_ujyyl"]
+[ext_resource type="AudioStream" uid="uid://1t4kql3wxtxh" path="res://SFX/sfx_ui_cancel.ogg" id="17_mkpwh"]
 
-[sub_resource type="Gradient" id="Gradient_l778x"]
+[sub_resource type="Gradient" id="Gradient_5egv6"]
 colors = PackedColorArray(0.996078, 0.666667, 0.760784, 1, 0.996078, 0.666667, 0.760784, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lftu5"]
-gradient = SubResource("Gradient_l778x")
+gradient = SubResource("Gradient_5egv6")
 width = 820
 height = 470
 
@@ -17,6 +30,430 @@ height = 470
 script/source = "extends Button
 
 "
+
+[sub_resource type="Animation" id="Animation_vtepg"]
+resource_name = "MainMenuLoad"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8dnnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m3bi6"]
+_data = {
+&"MainMenuLoad": SubResource("Animation_vtepg"),
+&"RESET": SubResource("Animation_8dnnj")
+}
+
+[sub_resource type="Animation" id="Animation_wyh8j"]
+resource_name = "SettingsOpen"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Setttings/TextureRect:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Setttings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Main:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Setttings/VBoxContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ujyyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Setttings/TextureRect:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Setttings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Main:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Setttings/VBoxContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelSelect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelSelect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Credits:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Credits:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mkpwh"]
+resource_name = "SettingsClose"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Setttings/TextureRect:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Setttings/VBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Setttings:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4nkqq"]
+resource_name = "LevelSelectOpen"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1920, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ehtkc"]
+resource_name = "LevelSelectClose"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1080)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_6dk6o"]
+resource_name = "CreditsOpen"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5707964, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jr6u5"]
+resource_name = "CreditsClose"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5707963267948966]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mkpwh"]
+_data = {
+&"CreditsClose": SubResource("Animation_jr6u5"),
+&"CreditsOpen": SubResource("Animation_6dk6o"),
+&"LevelSelectClose": SubResource("Animation_ehtkc"),
+&"LevelSelectOpen": SubResource("Animation_4nkqq"),
+&"RESET": SubResource("Animation_ujyyl"),
+&"SettingsClose": SubResource("Animation_mkpwh"),
+&"SettingsOpen": SubResource("Animation_wyh8j")
+}
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -34,28 +471,26 @@ offset_right = 4783.0
 offset_bottom = 4272.0
 color = Color(0.0156863, 0.0156863, 0.0156863, 0.392157)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Main" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-
-[node name="Main" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Main"]
+[node name="TextureRect" type="TextureRect" parent="Main"]
+layout_mode = 2
+texture = ExtResource("2_t1dhk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Main"]
+layout_mode = 2
+theme_override_constants/margin_top = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "PLACEHOLDER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Start" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="Start" type="Button" parent="Main/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -64,7 +499,7 @@ focus_neighbor_bottom = NodePath("../Settings")
 theme_override_font_sizes/font_size = 48
 text = "Level Select"
 
-[node name="Settings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="Settings" type="Button" parent="Main/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -74,7 +509,7 @@ focus_neighbor_bottom = NodePath("../Credits")
 theme_override_font_sizes/font_size = 48
 text = "Settings"
 
-[node name="Credits" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="Credits" type="Button" parent="Main/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -84,7 +519,7 @@ focus_neighbor_bottom = NodePath("../Quit")
 theme_override_font_sizes/font_size = 48
 text = "Credits"
 
-[node name="Quit" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="Quit" type="Button" parent="Main/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -93,81 +528,141 @@ focus_neighbor_top = NodePath("../Credits")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 
-[node name="LevelSelect" type="MarginContainer" parent="VBoxContainer"]
+[node name="LevelSelect" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 2
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/LevelSelect"]
+[node name="TextureRect1" type="TextureRect" parent="LevelSelect"]
+layout_mode = 2
+texture = ExtResource("2_opfnp")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelSelect"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_vr1f0")
+
+[node name="TextureRect3" type="TextureRect" parent="LevelSelect"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_t1dhk")
+
+[node name="TextureRect4" type="TextureRect" parent="LevelSelect"]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_5egv6")
+
+[node name="TextureRect5" type="TextureRect" parent="LevelSelect"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_vtepg")
+
+[node name="TextureRect6" type="TextureRect" parent="LevelSelect"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_8dnnj")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "Level Select"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="Button" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2"]
+[node name="Button" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Level 1"
+text = "● Level 1"
 script = ExtResource("2_r6jal")
 level_name = "Level 1"
 level = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2"]
+[node name="Button2" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Level 2"
+text = "● Level 2"
 script = ExtResource("2_r6jal")
 level_name = "Level 2"
 level = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer" groups=["LevelSelectDisplay"]]
+[node name="Button3" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 50
+text = "● Level 3"
+script = ExtResource("2_r6jal")
+level_name = "Level 3"
+level = 3
+
+[node name="Button4" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "● Level 4"
+script = ExtResource("2_r6jal")
+level_name = "Level 4"
+level = 4
+
+[node name="Button5" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "● Level 5"
+script = ExtResource("2_r6jal")
+level_name = "Level 5"
+level = 5
+
+[node name="Button6" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "● Level 6"
+script = ExtResource("2_r6jal")
+level_name = "Level  6"
+level = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer" groups=["LevelSelectDisplay"]]
+layout_mode = 2
+size_flags_horizontal = 10
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 alignment = 2
 script = ExtResource("3_eit8o")
 
-[node name="Label" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 50
 text = "Name"
 horizontal_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 texture = SubResource("GradientTexture2D_lftu5")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TextureRect2"]
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TextureRect2"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 0
 offset_left = 10.0
@@ -175,29 +670,35 @@ offset_top = 10.0
 offset_right = 810.0
 offset_bottom = 460.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label2" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "Best Time: "
 horizontal_alignment = 2
 
-[node name="Time" type="Label" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Time" type="Label" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "--:--"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Continue" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Continue" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -206,83 +707,56 @@ theme_override_font_sizes/font_size = 48
 text = "OK"
 script = SubResource("GDScript_txh7g")
 
-[node name="Button" type="Button" parent="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Back"
 
-[node name="Setttings" type="MarginContainer" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
+[node name="Setttings" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_vertical = 3
-theme_override_constants/margin_top = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Setttings"]
+[node name="TextureRect" type="TextureProgressBar" parent="Setttings"]
+layout_mode = 2
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("11_vtepg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setttings"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 44
 
-[node name="Label" type="Label" parent="VBoxContainer/Setttings/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "Settings"
-horizontal_alignment = 1
-
-[node name="Settings" parent="VBoxContainer/Setttings/VBoxContainer" instance=ExtResource("3_ixxew")]
+[node name="Settings" parent="Setttings/VBoxContainer" instance=ExtResource("3_ixxew")]
 layout_mode = 2
 
-[node name="Credits" type="MarginContainer" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
+[node name="Credits" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_vertical = 3
-theme_override_constants/margin_top = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Credits"]
+[node name="TextureRect" type="TextureRect" parent="Credits"]
 layout_mode = 2
-size_flags_vertical = 4
+texture = ExtResource("5_n45e2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_override_constants/separation = 36
 
-[node name="Label" type="Label" parent="VBoxContainer/Credits/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "Credits"
-horizontal_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Credits/VBoxContainer"]
-custom_minimum_size = Vector2(0, 800)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="Credits" type="GridContainer" parent="VBoxContainer/Credits/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 64
-theme_override_constants/v_separation = 10
-columns = 2
-
-[node name="Credits" type="Label" parent="VBoxContainer/Credits/VBoxContainer/ScrollContainer/Credits"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 28
-text = "Nerd"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Credits2" type="Label" parent="VBoxContainer/Credits/VBoxContainer/ScrollContainer/Credits"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 28
-text = "Dennis"
-vertical_alignment = 1
-
-[node name="Back" type="Button" parent="VBoxContainer/Credits/VBoxContainer"]
+[node name="Back" type="Button" parent="Credits/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -290,22 +764,49 @@ size_flags_vertical = 6
 theme_override_font_sizes/font_size = 48
 text = "Back"
 
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("13_5egv6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_m3bi6")
+}
+autoplay = "MainMenuLoad"
+
 [node name="BlipSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("15_wyh8j")
+bus = &"SFX"
 
 [node name="AcceptSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("16_ujyyl")
+bus = &"SFX"
 
 [node name="BackSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("17_mkpwh")
+bus = &"SFX"
 
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Start" to="." method="_on_level_select_pressed"]
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button2" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button2" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue" to="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/Button" to="." method="_on_level_select_back_pressed"]
-[connection signal="on_back_pressed" from="VBoxContainer/Setttings/VBoxContainer/Settings" to="." method="_on_settings_back_pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits/VBoxContainer/Back" to="." method="_on_credits_back_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mkpwh")
+}
+
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Start" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="focus_entered" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button" method="_on_focus_entered"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button2" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button2" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button3" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button3" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button4" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button4" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button5" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button5" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button6" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button6" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue" to="LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/Button" to="." method="_on_level_select_back_pressed"]
+[connection signal="on_back_pressed" from="Setttings/VBoxContainer/Settings" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="Credits/MarginContainer/VBoxContainer/Back" to="." method="_on_credits_back_pressed"]

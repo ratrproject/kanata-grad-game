@@ -1,6 +1,183 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl48slfx2dgx4"]
+[gd_scene load_steps=11 format=3 uid="uid://cl48slfx2dgx4"]
 
 [ext_resource type="Script" uid="uid://bydpbwbf2ueh8" path="res://Scripts/UI/EndMenu.gd" id="1_ayxxa"]
+[ext_resource type="Texture2D" uid="uid://c71lkkp4pvflk" path="res://Sprites/UI/Menu/LevelComplete.png" id="2_wrsnd"]
+[ext_resource type="Texture2D" uid="uid://dg6g63uy0p4so" path="res://Sprites/Ending/Ending5.png" id="3_fjfhw"]
+[ext_resource type="AudioStream" uid="uid://dkq2wr73f7xpo" path="res://SFX/sfx_env_camera.ogg" id="4_e214x"]
+[ext_resource type="AudioStream" uid="uid://c7xe621eif8ew" path="res://SFX/sfx_ui_cursor.ogg" id="4_tx7ng"]
+[ext_resource type="AudioStream" uid="uid://bbty080kanomy" path="res://SFX/sfx_ui_confirm.ogg" id="5_fjfhw"]
+[ext_resource type="AudioStream" uid="uid://1t4kql3wxtxh" path="res://SFX/sfx_ui_cancel.ogg" id="6_vp12d"]
+
+[sub_resource type="Animation" id="Animation_rrpri"]
+resource_name = "Open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(934, 278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect3:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5000001, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.45, 0.45)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D4")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e214x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(934, 278)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect3:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0.45, 0.45)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tx7ng"]
+_data = {
+&"Open": SubResource("Animation_rrpri"),
+&"RESET": SubResource("Animation_e214x")
+}
 
 [node name="EndMenu" type="Control" groups=["EndMenu"]]
 process_mode = 2
@@ -18,26 +195,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ayxxa")
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_wrsnd")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 934.0
+offset_top = 278.0
+offset_right = 2933.9922
+offset_bottom = 1358.0
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_fjfhw")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -4000.0
-offset_top = -4000.0
+offset_top = -4192.0
 offset_right = 4000.0
-offset_bottom = 4000.0
-color = Color(0.0156863, 0.0156863, 0.0156863, 0.392157)
+offset_bottom = 3808.0
+color = Color(1, 1, 1, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 80
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Victory!"
@@ -87,16 +282,28 @@ theme_override_font_sizes/font_size = 48
 text = "Quit"
 
 [node name="BlipSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("4_tx7ng")
+bus = &"SFX"
 
 [node name="AcceptSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("5_fjfhw")
+bus = &"SFX"
 
 [node name="BackSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("6_vp12d")
+bus = &"SFX"
 
 [node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_e214x")
+volume_db = 10.78
 max_distance = 200000.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_tx7ng")
+}
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button3" to="." method="_on_restart_button_pressed"]

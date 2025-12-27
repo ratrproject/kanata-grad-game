@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dn3aplp4ldeed"]
+[gd_scene load_steps=103 format=3 uid="uid://dn3aplp4ldeed"]
 
 [ext_resource type="Script" uid="uid://bi8xu1xess6se" path="res://Scripts/LevelMain.gd" id="1_duhhb"]
 [ext_resource type="PackedScene" uid="uid://dmwljje80jms1" path="res://Scenes/player.tscn" id="2_kjwuu"]
@@ -35,6 +35,7 @@ script = ExtResource("4_b46bo")
 offset = Vector2(0, 40)
 bullet = "1"
 nbr = 2
+iterations = -1
 cooldown_spawn = 0.1
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_va1gj"]
@@ -44,14 +45,13 @@ symmetry_type = 9
 bullet = "2"
 nbr = 6
 iterations = -1
-cooldown_spawn = 0.5
 metadata/_custom_type_script = "uid://b7tgmign3yhgb"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tcdvl"]
 resource_name = "PatternCircle"
 script = ExtResource("5_6r6u1")
 angle_total = 0.7853981633974483
-angle_decal = 6.283185307179586
+angle_decal = 5.8904862254808625
 bullet = "2"
 nbr = 5
 iterations = -1
@@ -113,7 +113,8 @@ metadata/_custom_type_script = "uid://bephveoobbe0o"
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_442u8"]
 resource_name = "PatternCircle"
 script = ExtResource("5_6r6u1")
-angle_total = 1.0471975511965976
+angle_total = 0.6981317007977318
+angle_decal = 5.934119456780721
 bullet = "9"
 nbr = 7
 iterations = 6
@@ -134,7 +135,7 @@ metadata/_custom_type_script = "uid://b7tgmign3yhgb"
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y6hg0"]
 resource_name = "PatternOne"
 script = ExtResource("6_fnf4j")
-bullet = "1"
+bullet = "12"
 iterations = 40
 cooldown_spawn = 0.06
 metadata/_custom_type_script = "uid://bephveoobbe0o"
@@ -145,6 +146,85 @@ script = ExtResource("4_b46bo")
 offset = Vector2(0, 40)
 bullet = "8"
 nbr = 5
+iterations = 3
+cooldown_spawn = 0.4
+metadata/_custom_type_script = "uid://dufebxkmihomo"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_duhhb"]
+resource_name = "PatternCircle"
+script = ExtResource("5_6r6u1")
+angle_total = 1.0471975511965976
+angle_decal = 5.759586531581287
+bullet = "10"
+nbr = 3
+iterations = -1
+metadata/_custom_type_script = "uid://b7tgmign3yhgb"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kjwuu"]
+resource_name = "PatternCircle"
+script = ExtResource("5_6r6u1")
+angle_total = 1.0471975511965976
+angle_decal = 5.759586531581287
+bullet = "11"
+nbr = 5
+iterations = -1
+cooldown_spawn = 1.5
+metadata/_custom_type_script = "uid://b7tgmign3yhgb"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_iaqcn"]
+resource_name = "PatternOne"
+script = ExtResource("6_fnf4j")
+bullet = "13"
+iterations = -1
+cooldown_spawn = 0.3
+metadata/_custom_type_script = "uid://bephveoobbe0o"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_b46bo"]
+resource_name = "PatternLine"
+script = ExtResource("4_b46bo")
+offset = Vector2(0, 40)
+bullet = "14"
+nbr = 3
+iterations = -1
+cooldown_spawn = 3.0
+metadata/_custom_type_script = "uid://dufebxkmihomo"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6r6u1"]
+resource_name = "PatternLine"
+script = ExtResource("4_b46bo")
+offset = Vector2(0, 40)
+bullet = "15"
+nbr = 3
+iterations = -1
+cooldown_spawn = 3.0
+metadata/_custom_type_script = "uid://dufebxkmihomo"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fnf4j"]
+resource_name = "PatternLine"
+script = ExtResource("4_b46bo")
+offset = Vector2(0, 40)
+bullet = "16"
+nbr = 3
+iterations = -1
+cooldown_spawn = 3.0
+metadata/_custom_type_script = "uid://dufebxkmihomo"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cmnfe"]
+resource_name = "PatternLine"
+script = ExtResource("4_b46bo")
+offset = Vector2(0, 40)
+bullet = "17"
+nbr = 5
+cooldown_spawn = 0.1
+metadata/_custom_type_script = "uid://dufebxkmihomo"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rjps6"]
+resource_name = "PatternLine"
+script = ExtResource("4_b46bo")
+offset = Vector2(40, 0)
+bullet = "18"
+nbr = 7
+cooldown_spawn = 0.1
 metadata/_custom_type_script = "uid://dufebxkmihomo"
 
 [sub_resource type="Curve2D" id="Curve2D_20h7r"]
@@ -152,6 +232,12 @@ metadata/_custom_type_script = "uid://dufebxkmihomo"
 [sub_resource type="Curve" id="Curve_7non7"]
 
 [sub_resource type="Resource" id="Resource_fp8br"]
+script = ExtResource("8_rjps6")
+ID = "1"
+texture = "1"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_skgmj"]
 script = ExtResource("8_rjps6")
 ID = "1"
 texture = "1"
@@ -163,6 +249,7 @@ metadata/_custom_type_script = "uid://ltnfm11t8qch"
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_dfwtf"]
 script = ExtResource("9_8p4xm")
 anim_idle = SubResource("Resource_fp8br")
+anim_shoot = SubResource("Resource_skgmj")
 damage = 1.0
 speed = 1000.0
 scale = 1.0
@@ -234,12 +321,21 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_ndo5x"]
 script = ExtResource("8_rjps6")
+ID = "2"
+texture = "0"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_h6uhj"]
+script = ExtResource("8_rjps6")
+ID = "2"
+texture = "0"
 SFX = "2"
 metadata/_custom_type_script = "uid://ltnfm11t8qch"
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_6tjl0"]
 script = ExtResource("9_8p4xm")
 anim_idle = SubResource("Resource_ndo5x")
+anim_spawn = SubResource("Resource_h6uhj")
 damage = 3.0
 speed = 250.0
 scale = 1.0
@@ -311,12 +407,21 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_5mv5w"]
 script = ExtResource("8_rjps6")
+ID = "3"
+texture = "0"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_ujs1w"]
+script = ExtResource("8_rjps6")
+ID = "3"
+texture = "0"
 SFX = "2"
 metadata/_custom_type_script = "uid://ltnfm11t8qch"
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_p7b0h"]
 script = ExtResource("9_8p4xm")
 anim_idle = SubResource("Resource_5mv5w")
+anim_shoot = SubResource("Resource_ujs1w")
 damage = 5.0
 speed = 250.0
 scale = 1.0
@@ -388,12 +493,21 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_y6hg0"]
 script = ExtResource("8_rjps6")
+ID = "4"
+texture = "4"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_kbwxm"]
+script = ExtResource("8_rjps6")
+ID = "4"
+texture = "4"
 SFX = "2"
 metadata/_custom_type_script = "uid://ltnfm11t8qch"
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_p11gg"]
 script = ExtResource("9_8p4xm")
 anim_idle = SubResource("Resource_y6hg0")
+anim_shoot = SubResource("Resource_kbwxm")
 damage = 16.0
 speed = 250.0
 scale = 3.0
@@ -468,6 +582,14 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_5k7lr"]
 script = ExtResource("8_rjps6")
+ID = "5"
+texture = "4"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_or8jt"]
+script = ExtResource("8_rjps6")
+ID = "5"
+texture = "4"
 SFX = "2"
 metadata/_custom_type_script = "uid://ltnfm11t8qch"
 
@@ -476,6 +598,7 @@ metadata/_custom_type_script = "uid://ltnfm11t8qch"
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_60tve"]
 script = ExtResource("9_8p4xm")
 anim_idle = SubResource("Resource_5k7lr")
+anim_shoot = SubResource("Resource_or8jt")
 damage = 5.0
 speed = 300.0
 scale = 1.0
@@ -548,12 +671,21 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_60tve"]
 script = ExtResource("8_rjps6")
+ID = "6"
+texture = "4"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_twuvp"]
+script = ExtResource("8_rjps6")
+ID = "6"
+texture = "4"
 SFX = "2"
 metadata/_custom_type_script = "uid://ltnfm11t8qch"
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_d70p6"]
 script = ExtResource("9_8p4xm")
 anim_idle = SubResource("Resource_60tve")
+anim_shoot = SubResource("Resource_twuvp")
 damage = 4.0
 speed = 300.0
 scale = 3.0
@@ -624,10 +756,24 @@ r_scale_multi_curve_choice = []
 r_scale_multi_iter_variation = Vector3(0, 0, 0)
 r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
+[sub_resource type="Resource" id="Resource_iaqcn"]
+script = ExtResource("8_rjps6")
+ID = "7"
+texture = "5"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_gctu4"]
+script = ExtResource("8_rjps6")
+ID = "7"
+texture = "5"
+SFX = "3"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_5k7lr"]
 script = ExtResource("9_8p4xm")
-anim_idle = SubResource("Resource_fp8br")
-damage = 5.0
+anim_idle = SubResource("Resource_iaqcn")
+anim_shoot = SubResource("Resource_gctu4")
+damage = 4.0
 speed = 500.0
 scale = 3.0
 angle = 0.0
@@ -697,10 +843,24 @@ r_scale_multi_curve_choice = []
 r_scale_multi_iter_variation = Vector3(0, 0, 0)
 r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
+[sub_resource type="Resource" id="Resource_b46bo"]
+script = ExtResource("8_rjps6")
+ID = "8"
+texture = "7"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_8ybtq"]
+script = ExtResource("8_rjps6")
+ID = "8"
+texture = "7"
+SFX = "5"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_5mv5w"]
 script = ExtResource("9_8p4xm")
-anim_idle = SubResource("Resource_fp8br")
-damage = 1.0
+anim_idle = SubResource("Resource_b46bo")
+anim_shoot = SubResource("Resource_8ybtq")
+damage = 4.0
 speed = 1000.0
 scale = 2.0
 angle = 0.0
@@ -769,10 +929,24 @@ r_scale_multi_curve_choice = []
 r_scale_multi_iter_variation = Vector3(0, 0, 0)
 r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
+[sub_resource type="Resource" id="Resource_cmnfe"]
+script = ExtResource("8_rjps6")
+ID = "9"
+texture = "3"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_p2btp"]
+script = ExtResource("8_rjps6")
+ID = "9"
+texture = "3"
+SFX = "4"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_y6hg0"]
 script = ExtResource("9_8p4xm")
-anim_idle = SubResource("Resource_fp8br")
-damage = 1.0
+anim_idle = SubResource("Resource_cmnfe")
+anim_shoot = SubResource("Resource_p2btp")
+damage = 3.0
 speed = 400.0
 scale = 1.0
 angle = 0.0
@@ -788,6 +962,764 @@ death_after_time = 10.0
 death_outside_box = Rect2(0, 0, 0, 0)
 death_from_collision = true
 a_direction_equation = "sin(x)"
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_kjwuu"]
+script = ExtResource("8_rjps6")
+ID = "10"
+texture = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_m6l5d"]
+script = ExtResource("8_rjps6")
+ID = "10"
+texture = "2"
+SFX = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_ndo5x"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_kjwuu")
+anim_shoot = SubResource("Resource_m6l5d")
+damage = 3.0
+speed = 250.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = "cos(x)"
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_duhhb"]
+script = ExtResource("8_rjps6")
+ID = "11"
+texture = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_pdcer"]
+script = ExtResource("8_rjps6")
+ID = "11"
+texture = "2"
+SFX = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_duhhb"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_duhhb")
+anim_shoot = SubResource("Resource_pdcer")
+damage = 3.0
+speed = 250.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = "sin(x)"
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_8p4xm"]
+script = ExtResource("8_rjps6")
+ID = "12"
+texture = "9"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_sbtfa"]
+script = ExtResource("8_rjps6")
+ID = "12"
+texture = "9"
+SFX = "6"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_skgmj"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_8p4xm")
+anim_shoot = SubResource("Resource_sbtfa")
+damage = 2.0
+speed = 700.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_60tve"]
+
+[sub_resource type="Resource" id="Resource_6r6u1"]
+script = ExtResource("8_rjps6")
+ID = "13"
+texture = "8"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_ev7kg"]
+script = ExtResource("8_rjps6")
+ID = "13"
+texture = "8"
+SFX = "1"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_fnf4j"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_6r6u1")
+anim_shoot = SubResource("Resource_ev7kg")
+damage = 3.0
+speed = 350.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_fnf4j"]
+script = ExtResource("8_rjps6")
+ID = "16"
+texture = "6"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_py6x3"]
+script = ExtResource("8_rjps6")
+ID = "16"
+texture = "6"
+SFX = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_iaqcn"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_fnf4j")
+anim_shoot = SubResource("Resource_py6x3")
+damage = 3.0
+speed = 250.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = "1/x"
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_ptik8"]
+script = ExtResource("8_rjps6")
+ID = "16"
+texture = "6"
+SFX = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_kjwuu"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_fnf4j")
+anim_shoot = SubResource("Resource_ptik8")
+damage = 3.0
+speed = 250.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_lrduq"]
+script = ExtResource("8_rjps6")
+ID = "16"
+texture = "6"
+SFX = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_cmnfe"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_fnf4j")
+anim_shoot = SubResource("Resource_lrduq")
+damage = 3.0
+speed = 250.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = "-1/x"
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_rjps6"]
+script = ExtResource("8_rjps6")
+ID = "18"
+texture = "6"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="Resource" id="Resource_sbp6b"]
+script = ExtResource("8_rjps6")
+ID = "18"
+texture = "6"
+SFX = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_8p4xm"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_rjps6")
+anim_shoot = SubResource("Resource_sbp6b")
+damage = 3.0
+speed = 250.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_7non7")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_abus5")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_suehp"]
+script = ExtResource("8_rjps6")
+ID = "18"
+texture = "6"
+SFX = "2"
+metadata/_custom_type_script = "uid://ltnfm11t8qch"
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_b46bo"]
+script = ExtResource("9_8p4xm")
+anim_idle = SubResource("Resource_rjps6")
+anim_shoot = SubResource("Resource_suehp")
+damage = 3.0
+speed = 200.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
 a_curve_movement = 0
 a_speed_multiplier = SubResource("Curve_7non7")
 a_speed_multi_iterations = 0
@@ -962,6 +1894,61 @@ script = ExtResource("3_iaqcn")
 id = "13"
 pattern = SubResource("NavigationPolygon_ndo5x")
 
+[node name="WatamateCosPattern" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "14"
+pattern = SubResource("NavigationPolygon_duhhb")
+
+[node name="WatameSupportPattern3" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "15"
+pattern = SubResource("NavigationPolygon_kjwuu")
+
+[node name="CocoSupportPattern2" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "16"
+pattern = SubResource("NavigationPolygon_iaqcn")
+
+[node name="BibiPattern" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "17"
+pattern = SubResource("NavigationPolygon_b46bo")
+
+[node name="BibiPattern2" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "18"
+pattern = SubResource("NavigationPolygon_6r6u1")
+
+[node name="BibiPattern3" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "19"
+pattern = SubResource("NavigationPolygon_fnf4j")
+
+[node name="TowaPattern" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "20"
+pattern = SubResource("NavigationPolygon_cmnfe")
+
+[node name="TowaPattern2" type="Path2D" parent="Patterns"]
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "21"
+pattern = SubResource("NavigationPolygon_rjps6")
+
+[node name="CirclePattern3" type="Path2D" parent="Patterns"]
+position = Vector2(0, 4.804)
+curve = SubResource("Curve2D_tcdvl")
+script = ExtResource("3_iaqcn")
+id = "22"
+pattern = SubResource("NavigationPolygon_va1gj")
+
 [node name="BulletProps" type="Node2D" parent="."]
 
 [node name="PlayerBullet" type="Path2D" parent="BulletProps"]
@@ -982,7 +1969,7 @@ script = ExtResource("7_cmnfe")
 id = "3"
 props = SubResource("PackedDataContainer_p7b0h")
 
-[node name="BigBullet" type="Path2D" parent="BulletProps"]
+[node name="HomingMissle" type="Path2D" parent="BulletProps"]
 curve = SubResource("Curve2D_20h7r")
 script = ExtResource("7_cmnfe")
 id = "4"
@@ -1006,17 +1993,71 @@ script = ExtResource("7_cmnfe")
 id = "7"
 props = SubResource("PackedDataContainer_5k7lr")
 
-[node name="PlayerBullet2" type="Path2D" parent="BulletProps"]
+[node name="TowaSupportFire" type="Path2D" parent="BulletProps"]
 curve = SubResource("Curve2D_20h7r")
 script = ExtResource("7_cmnfe")
 id = "8"
 props = SubResource("PackedDataContainer_5mv5w")
 
-[node name="PlayerCosBullet" type="Path2D" parent="BulletProps"]
+[node name="WatameSupportBullet" type="Path2D" parent="BulletProps"]
 curve = SubResource("Curve2D_20h7r")
 script = ExtResource("7_cmnfe")
 id = "9"
 props = SubResource("PackedDataContainer_y6hg0")
+
+[node name="CosBullet" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_20h7r")
+script = ExtResource("7_cmnfe")
+id = "10"
+props = SubResource("PackedDataContainer_ndo5x")
+
+[node name="CosBullet2" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_20h7r")
+script = ExtResource("7_cmnfe")
+id = "11"
+props = SubResource("PackedDataContainer_duhhb")
+
+[node name="CocoSupportBullet" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_20h7r")
+script = ExtResource("7_cmnfe")
+id = "12"
+props = SubResource("PackedDataContainer_skgmj")
+
+[node name="CocoFanBullet" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_60tve")
+script = ExtResource("7_cmnfe")
+id = "13"
+props = SubResource("PackedDataContainer_fnf4j")
+
+[node name="BibiBullet" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_60tve")
+script = ExtResource("7_cmnfe")
+id = "14"
+props = SubResource("PackedDataContainer_iaqcn")
+
+[node name="BibiBullet2" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_60tve")
+script = ExtResource("7_cmnfe")
+id = "15"
+props = SubResource("PackedDataContainer_kjwuu")
+
+[node name="BibiBullet3" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_60tve")
+script = ExtResource("7_cmnfe")
+id = "16"
+props = SubResource("PackedDataContainer_cmnfe")
+
+[node name="TowaBullet" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_60tve")
+script = ExtResource("7_cmnfe")
+id = "17"
+props = SubResource("PackedDataContainer_8p4xm")
+
+[node name="TowaBullet2" type="Path2D" parent="BulletProps"]
+curve = SubResource("Curve2D_60tve")
+script = ExtResource("7_cmnfe")
+id = "18"
+props = SubResource("PackedDataContainer_b46bo")
 
 [node name="WorldMap" type="Node2D" parent="." groups=["Background"]]
 script = ExtResource("10_skgmj")

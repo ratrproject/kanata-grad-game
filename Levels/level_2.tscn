@@ -193,6 +193,11 @@ texture = ExtResource("2_rp5ft")
 [node name="Sprite2D" parent="WorldMap/Background/Back/Area2D3" index="0"]
 texture = ExtResource("2_rp5ft")
 
+[node name="Clouds" parent="WorldMap/Background/Back" index="3"]
+customColor = true
+colorMin = Color(1, 0.8235294, 0.81960785, 1)
+colorMax = Color(1, 0.92941177, 0.9411765, 1)
+
 [node name="Sprite2D" parent="WorldMap/Background/Mid/Area2D" index="0"]
 texture = ExtResource("3_qeqk5")
 
@@ -446,6 +451,7 @@ position = Vector2(-137, -391)
 curve = SubResource("Curve2D_w6yvm")
 
 [node name="Checkpoint5" type="Node2D" parent="WorldMap/Checkpoints" index="5"]
+visible = false
 position = Vector2(776, 363)
 script = ExtResource("2_s275v")
 
@@ -491,6 +497,7 @@ Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
 [node name="LuKnight" parent="WorldMap/Checkpoints/Checkpoint5/Enemies" index="5" instance=ExtResource("3_s275v")]
+position = Vector2(2118, 63)
 Paths = [NodePath("../../Paths/Enemy/Path2D")]
 
 [node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint5" index="2"]
@@ -529,22 +536,22 @@ shape = SubResource("RectangleShape2D_1soli")
 position = Vector2(69, 0)
 
 [node name="LuKnight2" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="0" instance=ExtResource("3_s275v")]
-position = Vector2(597, 820)
+position = Vector2(597, 800)
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
 [node name="LuKnight3" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="1" instance=ExtResource("3_s275v")]
-position = Vector2(597, 1120)
+position = Vector2(597, 1400)
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
 [node name="LuKnight4" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="2" instance=ExtResource("3_s275v")]
-position = Vector2(597, 1420)
+position = Vector2(597, 2000)
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
 [node name="LuKnight5" parent="WorldMap/Checkpoints/Checkpoint6/Enemies" index="3" instance=ExtResource("3_s275v")]
-position = Vector2(597, 1720)
+position = Vector2(597, 2600)
 Behavior = 1
 Paths = [NodePath("../../Paths/Enemy2/Path2D"), NodePath("../../Paths/Enemy2/Path2D2")]
 
@@ -563,6 +570,7 @@ position = Vector2(-323, 356)
 curve = SubResource("Curve2D_3slvs")
 
 [node name="Checkpoint7" type="Node2D" parent="WorldMap/Checkpoints" index="7"]
+visible = false
 position = Vector2(884, 363)
 script = ExtResource("2_s275v")
 
@@ -631,8 +639,10 @@ position = Vector2(166, -882)
 curve = SubResource("Curve2D_7t8bs")
 
 [node name="Checkpoint10" type="Node2D" parent="WorldMap/Checkpoints" index="8"]
+visible = false
 position = Vector2(808, 361)
 script = ExtResource("2_s275v")
+finalCheckpoint = true
 
 [node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint10" index="0"]
 position = Vector2(-191, 34)
@@ -648,6 +658,7 @@ position = Vector2(69, 0)
 [node name="Luna" parent="WorldMap/Checkpoints/Checkpoint10/Enemies" index="0" instance=ExtResource("6_qeqk5")]
 position = Vector2(1849, -624)
 collision_mask = 8
+MaxHealth = 400.0
 Paths = [NodePath("../../Paths/Enemy/Path2D")]
 
 [node name="Paths" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint10" index="2"]
@@ -658,6 +669,9 @@ position = Vector2(701, 0)
 
 [node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint10/Paths/Enemy" index="0"]
 curve = SubResource("Curve2D_lkaga")
+
+[node name="CanvasLayer" parent="." index="6"]
+alt_image_path = "res://Sprites/Ending/Ending2.png"
 
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint1/Area2D" to="WorldMap/Checkpoints/Checkpoint1" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint2/Area2D" to="WorldMap/Checkpoints/Checkpoint2" method="_on_area_2d_area_entered"]

@@ -10,7 +10,7 @@ var selected_level_name = ''
 #const Level5Texture = preload("res://Images/Levels/level_5.png")
 
 func _ready():
-	load_data($"../ScrollContainer/VBoxContainer2/Button")
+	load_data($"../VBoxContainer2/Button")
 
 func load_data(btn):
 	#@export var image = ''
@@ -19,7 +19,7 @@ func load_data(btn):
 	
 	$Label.text = selected_level_name
 	
-	var best_times = $"../../../../../../../..".best_times
+	var best_times = $"../../../../../../..".best_times
 	if selected_level > best_times.size():
 		$HBoxContainer2/Time.text = '--:--'
 	else:

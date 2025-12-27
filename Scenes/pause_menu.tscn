@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1fat6bedgrnf"]
+[gd_scene load_steps=8 format=3 uid="uid://d1fat6bedgrnf"]
 
 [ext_resource type="Script" uid="uid://c5ugs3kp5pfia" path="res://Scripts/UI/PauseMenu.gd" id="1_euejj"]
+[ext_resource type="Texture2D" uid="uid://drfy738drbx0i" path="res://Sprites/UI/Menu/Pause.png" id="2_1och7"]
 [ext_resource type="PackedScene" uid="uid://c7d1i25b3khwr" path="res://Scenes/settings.tscn" id="2_8m5yy"]
+[ext_resource type="Texture2D" uid="uid://yjd0iesygfm7" path="res://Sprites/UI/Menu/Settings.png" id="3_bpi0q"]
+[ext_resource type="AudioStream" uid="uid://c7xe621eif8ew" path="res://SFX/sfx_ui_cursor.ogg" id="5_sjs17"]
+[ext_resource type="AudioStream" uid="uid://bbty080kanomy" path="res://SFX/sfx_ui_confirm.ogg" id="6_u8tnp"]
+[ext_resource type="AudioStream" uid="uid://1t4kql3wxtxh" path="res://SFX/sfx_ui_cancel.ogg" id="7_stj27"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -20,33 +25,37 @@ grow_vertical = 2
 script = ExtResource("1_euejj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -4000.0
-offset_top = -4000.0
+offset_top = -4192.0
 offset_right = 4000.0
-offset_bottom = 4000.0
+offset_bottom = 3808.0
 color = Color(0.0156863, 0.0156863, 0.0156863, 0.392157)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-theme_override_constants/margin_top = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-visible = false
+[node name="Pause" type="Control" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Pause"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_1och7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Pause"]
+layout_mode = 0
+offset_top = 305.0
+offset_right = 1920.0
+offset_bottom = 775.0
 size_flags_vertical = 4
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "Pause Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="MarginContainer/Pause/VBoxContainer"]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -56,7 +65,7 @@ focus_neighbor_bottom = NodePath("../Settings/ShakeCheck")
 theme_override_font_sizes/font_size = 48
 text = "Resume"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="MarginContainer/Pause/VBoxContainer"]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -66,7 +75,7 @@ focus_neighbor_bottom = NodePath("../Settings/ShakeCheck")
 theme_override_font_sizes/font_size = 48
 text = "Restart"
 
-[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button4" type="Button" parent="MarginContainer/Pause/VBoxContainer"]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -76,7 +85,7 @@ focus_neighbor_bottom = NodePath("../Settings/ShakeCheck")
 theme_override_font_sizes/font_size = 48
 text = "Settings"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/Pause/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -86,34 +95,42 @@ focus_neighbor_bottom = NodePath("../Button2")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="Settings" type="Control" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Settings"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_bpi0q")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Settings"]
+layout_mode = 0
+offset_top = 307.0
+offset_right = 1920.0
+offset_bottom = 1650.0
 size_flags_vertical = 4
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Settings" parent="MarginContainer/VBoxContainer2" instance=ExtResource("2_8m5yy")]
+[node name="Settings" parent="MarginContainer/Settings/VBoxContainer2" instance=ExtResource("2_8m5yy")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 
 [node name="BlipSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("5_sjs17")
+bus = &"SFX"
 
 [node name="AcceptSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("6_u8tnp")
+bus = &"SFX"
 
 [node name="BackSFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -30.464
+stream = ExtResource("7_stj27")
+bus = &"SFX"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button3" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button4" to="." method="_on_settings_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_quit_pressed"]
-[connection signal="on_back_pressed" from="MarginContainer/VBoxContainer2/Settings" to="." method="_on_settings_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/Pause/VBoxContainer/Button2" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Pause/VBoxContainer/Button3" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Pause/VBoxContainer/Button4" to="." method="_on_settings_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Pause/VBoxContainer/Button" to="." method="_on_quit_pressed"]
+[connection signal="on_back_pressed" from="MarginContainer/Settings/VBoxContainer2/Settings" to="." method="_on_settings_on_back_pressed"]

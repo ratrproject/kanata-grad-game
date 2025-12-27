@@ -63,7 +63,7 @@ func _ready():
 		auto_call = true
 		set_physics_process(active)
 		
-	if rotating_speed > 0: set_physics_process(active)
+	if abs(rotating_speed) > 0: set_physics_process(active)
 		
 	if active and pool_amount > 0:
 		call_deferred("set_pool")
@@ -80,12 +80,14 @@ var _delta:float
 func _physics_process(delta):
 	if Engine.is_editor_hint(): return
 	_delta = delta
-	rotate(rotating_angle_direction * rotating_speed * delta)
-	if (rotating_angle_limit):
-		if rotating_angle_direction == 1 and rotation > rotating_angle / 2 + rotating_angle_default:
-			rotating_angle_direction = -1
-		elif rotating_angle_direction == -1 and rotation < -rotating_angle / 2 + rotating_angle_default:
-			rotating_angle_direction = 1
+	
+	if active:
+		rotate(rotating_angle_direction * rotating_speed * delta)
+		if (rotating_angle_limit):
+			if rotating_angle_direction == 1 and rotation > rotating_angle / 2 + rotating_angle_default:
+				rotating_angle_direction = -1
+			elif rotating_angle_direction == -1 and rotation < -rotating_angle / 2 + rotating_angle_default:
+				rotating_angle_direction = 1
 	
 	if trig_container:
 		checkTrigger()
@@ -97,7 +99,7 @@ func _physics_process(delta):
 	if can_respawn and auto_call and active and auto_pattern_id != "":
 		call_deferred("callAction")
 		can_respawn = false
-		if not rotating_speed > 0: set_physics_process(false)
+		if not abs(rotating_speed) > 0: set_physics_process(false)
 		
 
 func on_screen(is_on):

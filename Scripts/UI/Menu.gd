@@ -3,16 +3,22 @@ extends CanvasLayer
 enum States { MAIN, PAUSE, FREEZE, END }
 var stateStack : Array
 
+@export var alt_image_path : String
+@export var alt_level_complete : bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = true
 	_changeState(States.MAIN)
 	
 	get_tree().call_group("Cursor", 'set_hidden')
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	
+	if alt_image_path:
+		$EndMenu.change_texture(alt_image_path)
+		
+	if alt_level_complete:
+		$EndMenu.alt_level_complete()
+		
 	
 func _input(event):
 	if Input.is_action_just_pressed ("Pause"):

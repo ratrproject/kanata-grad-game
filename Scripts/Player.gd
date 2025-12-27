@@ -23,11 +23,25 @@ var deathSpinSpeed = 720
 @onready var _master_bus := AudioServer.get_bus_index(master_bus_name)
 var volume = 1
 
+
+@export var LunaSupportUnlocked = false
+@export var WatameSupportUnlocked = false
+@export var TowaSupportUnlocked = false
+@export var CocoSupportUnlocked = false
+
 var LunaSupport = preload("res://Scenes/Support/luna_support.tscn")
 var WatameSupport = preload("res://Scenes/Support/watame_support.tscn")
 var TowaSupport = preload("res://Scenes/Support/towa_support.tscn")
 var CocoSupport = preload("res://Scenes/Support/coco_support.tscn")
+
+var LunaSupportAvailable = true
+var WatameSupportAvailable = true
+var TowaSupportAvailable = true
+var CocoSupportAvailable = true
+
 var current_support : Node2D = null
+
+var immune : bool = false
 
 func _ready():
 	health = MaxHealth
@@ -45,37 +59,46 @@ func _physics_process(delta: float):
 	velocity = input_direction * speed
 	move_and_slide()
 	
-	if Input.is_action_pressed("Fire") and canFire and power >= TPPerShot:
-		shoot()
-	elif canRegen:
-		power = min(power + TPRegen * delta, MaxTenshiPower)
+	#if Input.is_action_pressed("Fire") and canFire and power >= TPPerShot:
+	#	shoot()
+	#elif canRegen:
+	#	power = min(power + TPRegen * delta, MaxTenshiPower)
 
-	if Input.is_action_pressed("Support1") and current_support == null:
-		current_support = LunaSupport.instantiate()
+	if Input.is_action_pressed("Support1") and LunaSupportUnlocked and LunaSupportAvailable:
+		var current_support = LunaSupport.instantiate()
+		LunaSupportAvailable = false
 		$SupportSpot.add_child(current_support)
-	if Input.is_action_pressed("Support2") and current_support == null:
-		current_support = WatameSupport.instantiate()
+	if Input.is_action_pressed("Support2") and WatameSupportUnlocked and WatameSupportAvailable:
+		var current_support = WatameSupport.instantiate()
+		WatameSupportAvailable = false
 		$SupportSpot.add_child(current_support)
-	if Input.is_action_pressed("Support3") and current_support == null:
-		current_support = TowaSupport.instantiate()
+	if Input.is_action_pressed("Support3") and TowaSupportUnlocked and TowaSupportAvailable:
+		var current_support = TowaSupport.instantiate()
+		TowaSupportAvailable = false
 		$SupportSpot.add_child(current_support)
-	if Input.is_action_pressed("Support4") and current_support == null:
-		current_support = CocoSupport.instantiate()
+	if Input.is_action_pressed("Support4") and CocoSupportUnlocked and CocoSupportAvailable:
+		var current_support = CocoSupport.instantiate()
+		CocoSupportAvailable = false
 		$SupportSpot.add_child(current_support)
 
 func take_damage(damage, direction):
-	health -= damage
-	if health < 0:
-		health = 0
-		die(direction)
-	else:
-		$DamageAnimation.play("Damage")
-		
-		if !$HitSFX.playing:
-			var k = randi_range(-2, 2)
-			var pitch = pow(2.0, k/12.0) 
-			$HitSFX.pitch_scale = pitch
-			$HitSFX.play()
+	if !immune:
+		health -= damage
+		if health < 0:
+			health = 0
+			die(direction)
+		else:
+			$DamageAnimation.play("Damage")
+			immune = true
+			
+			if !$HitSFX.playing:
+				var k = randi_range(-2, 2)
+				var pitch = pow(2.0, k/12.0) 
+				$HitSFX.pitch_scale = pitch
+				$HitSFX.play()
+			
+func end_damage():
+	immune = false
 
 func die(direction):
 	$AnimationPlayer.play("Death")
@@ -107,3 +130,15 @@ func can_regen():
 
 func _on_area_2d_body_entered(body):
 	take_damage(body.CollisionDamage, global_position - body.global_position)
+
+func unlockLuna():
+	LunaSupportUnlocked = true
+	
+func unlockWatame():
+	WatameSupportUnlocked = true
+	
+func unlockTowa():
+	TowaSupportUnlocked = true
+	
+func unlockCoco():
+	CocoSupportUnlocked = true

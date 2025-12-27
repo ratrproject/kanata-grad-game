@@ -13,7 +13,7 @@ signal on_back_pressed
 @export var master_bus_name := "Master"
 @export var sfx_bus_name := "SFX"
 @export var music_bus_name := "Music"
-@export var voice_bus_name := "Voices"
+@export var voice_bus_name := "Voice"
 @onready var _master_bus := AudioServer.get_bus_index(master_bus_name)
 @onready var _sfx_bus := AudioServer.get_bus_index(sfx_bus_name)
 @onready var _music_bus := AudioServer.get_bus_index(music_bus_name)

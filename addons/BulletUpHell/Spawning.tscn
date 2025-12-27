@@ -1,13 +1,27 @@
-[gd_scene load_steps=17 format=3 uid="uid://gixop20d1d75"]
+[gd_scene load_steps=41 format=3 uid="uid://gixop20d1d75"]
 
 [ext_resource type="Script" uid="uid://d387yy07lnk3p" path="res://addons/BulletUpHell/BuHSpawner.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b6aeteyttjme7" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_3.png" id="2_3slxn"]
 [ext_resource type="Script" uid="uid://ltnfm11t8qch" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="2_4dc5c"]
 [ext_resource type="Texture2D" uid="uid://cjyfsjsot0ppd" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_06.png" id="3_6fafs"]
+[ext_resource type="Texture2D" uid="uid://cvjgsr7ky3jwe" path="res://Sprites/Bullet_enemy.png" id="3_hmrcn"]
+[ext_resource type="Texture2D" uid="uid://dn41eiswemp50" path="res://Sprites/Bullet_11.png" id="4_7kntm"]
 [ext_resource type="Texture2D" uid="uid://dox6y64b4cha4" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_11.png" id="4_gntuv"]
+[ext_resource type="Texture2D" uid="uid://d1o33bn185h03" path="res://Sprites/Note.png" id="5_78yhu"]
 [ext_resource type="AudioStream" uid="uid://t8vknxh0wtxj" path="res://addons/BulletUpHell/Bullet/Hit Hurt.wav" id="5_rada6"]
+[ext_resource type="Texture2D" uid="uid://drv7t2g3eth2s" path="res://Sprites/Note-ally.png" id="6_6f7cb"]
+[ext_resource type="Texture2D" uid="uid://bx3hraummmv6m" path="res://Sprites/candy-enemy.png" id="7_ostyn"]
 [ext_resource type="AudioStream" uid="uid://dxfc7wy42m375" path="res://SFX/sfx_pc_kanatashoot.ogg" id="7_paewv"]
+[ext_resource type="Texture2D" uid="uid://cj0e140alxkw1" path="res://Sprites/candy-ally.png" id="8_2r6qu"]
 [ext_resource type="AudioStream" uid="uid://cvbmm6ej05ehm" path="res://SFX/sfx_npc_enemyshoot.ogg" id="8_vcv82"]
+[ext_resource type="Texture2D" uid="uid://cv1piy76lnush" path="res://Sprites/fire-enemy.png" id="9_bfenb"]
+[ext_resource type="Texture2D" uid="uid://b2noym6sd06fn" path="res://Sprites/fire-ally.png" id="10_h08xm"]
+[ext_resource type="Texture2D" uid="uid://blphqwm5r315y" path="res://Sprites/gun-bullet-1.png" id="11_7hwf5"]
+[ext_resource type="Texture2D" uid="uid://cmrxxtnnrgohf" path="res://Sprites/gun-bullet-2.png" id="12_lhd0s"]
+[ext_resource type="AudioStream" uid="uid://dgeiqnml8i7kd" path="res://SFX/sfx_pc_supportshootluna.ogg" id="19_h08xm"]
+[ext_resource type="AudioStream" uid="uid://cjetil3h3ajhp" path="res://SFX/sfx_pc_supportshootwatame.ogg" id="20_7hwf5"]
+[ext_resource type="AudioStream" uid="uid://b0dhr8lh0o6ap" path="res://SFX/sfx_pc_supportshoottowa.ogg" id="21_lhd0s"]
+[ext_resource type="AudioStream" uid="uid://dsyhkh4p2tg7v" path="res://SFX/sfx_pc_supportshootcoco.ogg" id="22_bxfbe"]
 
 [sub_resource type="Resource" id="Resource_uhb1j"]
 script = ExtResource("2_4dc5c")
@@ -35,6 +49,46 @@ script = ExtResource("2_4dc5c")
 texture = "0"
 collision = "0"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kntm"]
+atlas = ExtResource("3_hmrcn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekyys"]
+atlas = ExtResource("4_7kntm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78yhu"]
+atlas = ExtResource("5_78yhu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l87k"]
+atlas = ExtResource("6_6f7cb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfenb"]
+atlas = ExtResource("7_ostyn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h08xm"]
+atlas = ExtResource("8_2r6qu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxfbe"]
+atlas = ExtResource("9_bfenb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3df0"]
+atlas = ExtResource("10_h08xm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hinud"]
+atlas = ExtResource("11_7hwf5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8msds"]
+atlas = ExtResource("12_lhd0s")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
 "frames": [],
@@ -44,7 +98,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3slxn")
+"texture": SubResource("AtlasTexture_7kntm")
 }],
 "loop": true,
 "name": &"0",
@@ -52,10 +106,74 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_gntuv")
+"texture": SubResource("AtlasTexture_ekyys")
 }],
 "loop": true,
 "name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78yhu")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l87k")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfenb")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h08xm")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxfbe")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3df0")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hinud")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8msds")
+}],
+"loop": true,
+"name": &"9",
 "speed": 5.0
 }, {
 "frames": [{
@@ -99,7 +217,7 @@ collision_layer = 8
 [node name="ShapeManager" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("1")
-animation = &"1"
+animation = &"9"
 
 [node name="0" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("2")
@@ -121,6 +239,26 @@ bus = &"SFX"
 [node name="2" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("8_vcv82")
 volume_db = -7.0
+bus = &"SFX"
+
+[node name="3" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("19_h08xm")
+volume_db = -7.026
+bus = &"SFX"
+
+[node name="4" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("20_7hwf5")
+volume_db = -7.026
+bus = &"SFX"
+
+[node name="5" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("21_lhd0s")
+volume_db = -7.026
+bus = &"SFX"
+
+[node name="6" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("22_bxfbe")
+volume_db = -7.026
 bus = &"SFX"
 
 [node name="Bouncy" type="CharacterBody2D" parent="."]

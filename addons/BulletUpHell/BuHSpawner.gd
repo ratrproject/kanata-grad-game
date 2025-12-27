@@ -981,7 +981,7 @@ func clear_bullets_within_dist(target_pos, radius:float=STANDARD_BULLET_RADIUS):
 func delete_bullet(b):
 	if not poolBullets.has(b): return
 	var B = poolBullets[b]
-	if arrayAnim[B["props"]["anim_delete"]][ANIM.SFX]: arrayAnim[B["props"]["anim_delete"]][ANIM.SFX].play()
+	#if arrayAnim[B["props"]["anim_delete"]][ANIM.SFX]: arrayAnim[B["props"]["anim_delete"]][ANIM.SFX].play()
 	back_to_grave(B["props"]["__ID__"],b)
 
 func get_bullets_in_radius(origin:Vector2, radius:float):

@@ -9,6 +9,10 @@ var width : float = 100
 @export var cloudRange : Rect2
 var rng : RandomNumberGenerator
 
+@export var customColor: bool = false
+@export var colorMin: Color
+@export var colorMax: Color
+
 const Cloud = preload("res://Scenes/cloud.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -50,6 +54,8 @@ func _spawnCloud(pos):
 		var cloud = Cloud.instantiate()
 		$Clouds.add_child(cloud)
 		cloud.global_position = pos
+		if customColor:
+			cloud.change_color(colorMin, colorMax)
 
 func _on_timer_timeout():
 	_spawnCloud(_random_inside_rect())

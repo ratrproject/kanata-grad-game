@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="2_isx8o"]
 
 [node name="PinkAxolotl" instance=ExtResource("1_6024v")]
+MaxHealth = 10.0
 
 [node name="SpawnPoint" type="Node2D" parent="." index="5"]
 rotation = 3.1415927

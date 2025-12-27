@@ -1,20 +1,18 @@
 extends Control
 
-var menu_cursor = load("res://Images/menu_cursor.png")
-
 # Called when the node enters the scene tree for the first time.
 func _ready():		
-	$VBoxContainer/Main.visible = true
-	$VBoxContainer/Setttings.visible = false
-	$VBoxContainer/Credits.visible = false
-	$VBoxContainer/LevelSelect.visible = false
+	$Main.visible = true
+	$Setttings.visible = false
+	$Credits.visible = false
+	$LevelSelect.visible = false
 	
-	$VBoxContainer/Main/VBoxContainer/Start.grab_focus()
+	$Main/MarginContainer/VBoxContainer/Start.grab_focus()
 	
 	if OS.has_feature('web'):
-		$VBoxContainer/Main/VBoxContainer/Quit.visible = false
+		$Main/MarginContainer/VBoxContainer/Quit.visible = false
 	
-	var buttons = $VBoxContainer/Main/VBoxContainer.get_children()
+	var buttons = $Main/MarginContainer/VBoxContainer.get_children()
 	
 	buttons = buttons.filter(func(element): return element.visible && !(element is Label))
 	for i in buttons.size():
@@ -24,9 +22,9 @@ func _ready():
 		buttons[i].focus_neighbor_top = buttons[above].get_path()
 		buttons[i].focus_neighbor_bottom = buttons[below].get_path()
 			
-	var levels = $VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2.get_children()
+	var levels = $LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2.get_children()
 	levels = levels.filter(func(element): return element.visible && !(element is Label))
-	levels.push_back($VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/Button)
+	levels.push_back($LevelSelect/MarginContainer/VBoxContainer/Button)
 	for i in levels.size():
 		var above = (i-1) % levels.size()
 		var below = (i+1) % levels.size()
@@ -34,8 +32,8 @@ func _ready():
 		levels[i].focus_neighbor_top = levels[above].get_path()
 		levels[i].focus_neighbor_bottom = levels[below].get_path()
 		
-		levels[i].focus_neighbor_left = $VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.get_path()
-		levels[i].focus_neighbor_right = $VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.get_path()
+		levels[i].focus_neighbor_left = $LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.get_path()
+		levels[i].focus_neighbor_right = $LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.get_path()
 					
 	var viewport : Viewport = get_viewport()
 	viewport.gui_focus_changed.connect(_gui_focus_change)
@@ -46,77 +44,59 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _input(event):
-	if $VBoxContainer/LevelSelect.visible: 
+	if $LevelSelect.visible: 
 		if Input.is_action_just_pressed ("ui_cancel") :
 			_on_level_select_back_pressed()
-	if $VBoxContainer/Setttings.visible: 
+	if $Setttings.visible: 
 		if Input.is_action_just_pressed ("ui_cancel") :
 			_on_settings_back_pressed()
-	if $VBoxContainer/Credits.visible: 
+	if $Credits.visible: 
 		if Input.is_action_just_pressed ("ui_cancel") :
 			_on_credits_back_pressed()
 	
 func _on_level_select_pressed():
-	$VBoxContainer/LevelSelect.visible = true
-	$VBoxContainer/Main.visible = false
-	$VBoxContainer/Setttings.visible = false
-	$VBoxContainer/Credits.visible = false
+	$AnimationPlayer.play("LevelSelectOpen")
 	
-	$VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/Button.grab_focus()
+	$LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button.grab_focus()
 	
 	$AcceptSFX.play()
 		
 func _on_settings_pressed():
-	$VBoxContainer/Main.visible = false
-	$VBoxContainer/Setttings.visible = true
-	$VBoxContainer/Credits.visible = false
-	$VBoxContainer/LevelSelect.visible = false
-	$VBoxContainer/Setttings/VBoxContainer/Settings._grab_focus()
+	$AnimationPlayer.play("SettingsOpen")
+	$Setttings/VBoxContainer/Settings._grab_focus()
 	
 	$AcceptSFX.play()
 		
 func _on_credits_pressed():
-	$VBoxContainer/Main.visible = false
-	$VBoxContainer/Setttings.visible = false
-	$VBoxContainer/Credits.visible = true
-	$VBoxContainer/LevelSelect.visible = false
+	$AnimationPlayer.play("CreditsOpen")
 	
-	$VBoxContainer/Credits/VBoxContainer/Back.grab_focus()
+	$Credits/MarginContainer/VBoxContainer/Back.grab_focus()
 	
 	$AcceptSFX.play()
 	
 func open_credits():
-	$VBoxContainer/Main.visible = false
-	$VBoxContainer/Setttings.visible = false
-	$VBoxContainer/Credits.visible = true
-	$VBoxContainer/LevelSelect.visible = false
+	$Main.visible = false
+	$Setttings.visible = false
+	$Credits.visible = true
+	$LevelSelect.visible = false
 	
 	#$VBoxContainer/Credits/VBoxContainer/Back.grab_focus()
 
 func _on_level_select_back_pressed():
-	$VBoxContainer/Main.visible = true
-	$VBoxContainer/Setttings.visible = false
-	$VBoxContainer/Credits.visible = false
-	$VBoxContainer/LevelSelect.visible = false
-	$VBoxContainer/Main/VBoxContainer/Start.grab_focus()
+	$AnimationPlayer.play("LevelSelectClose")
+	$Main/MarginContainer/VBoxContainer/Start.grab_focus()
 	
 	$BackSFX.play()
 
 func _on_settings_back_pressed():
-	$VBoxContainer/Main.visible = true
-	$VBoxContainer/Setttings.visible = false
-	$VBoxContainer/Credits.visible = false
-	$VBoxContainer/LevelSelect.visible = false
-	$VBoxContainer/Main/VBoxContainer/Settings.grab_focus()
+	$AnimationPlayer.play("SettingsClose")
+	$Main/MarginContainer/VBoxContainer/Settings.grab_focus()
 	
 	$BackSFX.play()
 	
 func _on_credits_back_pressed():
-	$VBoxContainer/Main.visible = true
-	$VBoxContainer/Setttings.visible = false
-	$VBoxContainer/Credits.visible = false
-	$VBoxContainer/LevelSelect.visible = false
-	$VBoxContainer/Main/VBoxContainer/Credits.grab_focus()
+	$AnimationPlayer.play("CreditsClose")
+	$Main/MarginContainer/VBoxContainer/Credits.grab_focus()
 	
 	$BackSFX.play()
 	
@@ -138,6 +118,6 @@ func _gui_focus_change(node : Control):
 		
 		get_tree().call_group("Cursor", 'move_position', node.get_global_position() + Vector2(10,10))
 		
-	if node != $VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue:
-		$VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.focus_neighbor_right = node.get_path()
-		$VBoxContainer/LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.focus_neighbor_left = node.get_path()
+	if node != $LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue:
+		$LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.focus_neighbor_right = node.get_path()
+		$LevelSelect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Continue.focus_neighbor_left = node.get_path()

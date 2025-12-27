@@ -274,7 +274,6 @@ point_count = 5
 position = Vector2(1026, 28)
 
 [node name="Checkpoint" type="Node2D" parent="WorldMap/Checkpoints" index="1"]
-visible = false
 position = Vector2(528, 361)
 script = ExtResource("12_2i07x")
 
@@ -296,7 +295,7 @@ Paths = [NodePath("../../Paths/Enemy/Path2D")]
 firingAngle = -0.2076941809873253
 
 [node name="PinkAxolotl2" parent="WorldMap/Checkpoints/Checkpoint/Enemies" index="1" instance=ExtResource("15_w38ni")]
-position = Vector2(2023, 158)
+position = Vector2(2059, 251)
 collision_mask = 8
 Paths = [NodePath("../../Paths/Enemy2/Path2D")]
 firingAngle = -0.2076941809873253
@@ -316,6 +315,7 @@ position = Vector2(-104, 0)
 curve = SubResource("Curve2D_77x7w")
 
 [node name="Enemy2" type="Node2D" parent="WorldMap/Checkpoints/Checkpoint/Paths" index="1"]
+position = Vector2(36, 93)
 
 [node name="Path2D" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint/Paths/Enemy2" index="0"]
 curve = SubResource("Curve2D_xoyoh")
@@ -805,6 +805,7 @@ curve = SubResource("Curve2D_1unet")
 [node name="Checkpoint9" type="Node2D" parent="WorldMap/Checkpoints" index="9"]
 position = Vector2(803, 361)
 script = ExtResource("12_2i07x")
+finalCheckpoint = true
 
 [node name="Area2D" type="Area2D" parent="WorldMap/Checkpoints/Checkpoint9" index="0"]
 position = Vector2(-191, 34)
@@ -871,6 +872,9 @@ curve = SubResource("Curve2D_4rxjj")
 [node name="Path2D2" type="Path2D" parent="WorldMap/Checkpoints/Checkpoint9/Paths/Enemy2" index="1"]
 position = Vector2(-132, 389)
 curve = SubResource("Curve2D_yxjiu")
+
+[node name="CanvasLayer" parent="." index="6"]
+alt_image_path = "res://Sprites/Ending/Ending1.png"
 
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint/Area2D" to="WorldMap/Checkpoints/Checkpoint" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="WorldMap/Checkpoints/Checkpoint2/Area2D" to="WorldMap/Checkpoints/Checkpoint2" method="_on_area_2d_area_entered"]

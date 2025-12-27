@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://eabbwl83jpmr"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_2wkqr"]
+[ext_resource type="Texture2D" uid="uid://dxi4ake604fln" path="res://Sprites/upao-boss.png" id="2_2wkqr"]
+[ext_resource type="Script" uid="uid://bskcghk8qpf2x" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="3_jdsap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y56ja"]
+radius = 108.97
+
+[node name="Upao" instance=ExtResource("1_2wkqr")]
+MaxHealth = 500.0
+CollisionDamage = 10.0
+Behavior = 4
+MainSpeed = 500.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-5, -12)
+shape = SubResource("CircleShape2D_y56ja")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_2wkqr")
+
+[node name="SpawnPoint" type="Node2D" parent="." index="6"]
+rotation = 3.1415927
+script = ExtResource("3_jdsap")
+active = false
+auto_pattern_id = "22"
+shared_area_name = "1"
+rotating_speed = 30.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")
+
+[node name="SpawnPoint2" type="Node2D" parent="." index="7"]
+rotation = 3.1415927
+script = ExtResource("3_jdsap")
+active = false
+auto_pattern_id = "22"
+shared_area_name = "1"
+rotating_speed = -30.0
+rotating_angle_limit = false
+rotating_angle = 0.0
+rotating_angle_default = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

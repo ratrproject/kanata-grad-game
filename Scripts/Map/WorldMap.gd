@@ -13,6 +13,8 @@ var stopped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Background.visible = true
+	
 	for j in $Background/Front.get_children().size(): 
 		var tile = $Background/Front.get_children()[j]
 		if tile.script.resource_path == 'res://Scripts/Map/WorldTile.gd':

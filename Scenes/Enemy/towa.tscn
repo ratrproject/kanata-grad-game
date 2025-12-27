@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv585wa51usdu"]
+
+[ext_resource type="PackedScene" uid="uid://cys716xogpgmb" path="res://Scenes/Enemy/enemy.tscn" id="1_gjps5"]
+[ext_resource type="Texture2D" uid="uid://bw84jm7um16uv" path="res://Sprites/towa.png" id="2_y56ja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y56ja"]
+radius = 108.97
+
+[node name="Towa" instance=ExtResource("1_gjps5")]
+MaxHealth = 600.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(3, 11)
+shape = SubResource("CircleShape2D_y56ja")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_y56ja")
+vframes = 2

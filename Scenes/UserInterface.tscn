@@ -1,12 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg3apmol1g4k2"]
+[gd_scene load_steps=19 format=3 uid="uid://dg3apmol1g4k2"]
 
 [ext_resource type="Script" uid="uid://d0sjncf72bbgk" path="res://Scripts/UI/Menu.gd" id="1_b4cfn"]
 [ext_resource type="Texture2D" uid="uid://d2hy8kh3ba36q" path="res://Sprites/UI/HP Bar Empty.png" id="2_k4v2d"]
 [ext_resource type="Script" uid="uid://c4q2ju052esu1" path="res://Scripts/UI/UserInterface.gd" id="2_k5w2u"]
 [ext_resource type="Texture2D" uid="uid://0fvltehaiwve" path="res://Sprites/UI/HP Bar Full.png" id="3_k5w2u"]
 [ext_resource type="Texture2D" uid="uid://1o4h8vrj56nq" path="res://Sprites/UI/HP Bar Full Blue.png" id="5_356oj"]
+[ext_resource type="Texture2D" uid="uid://cj6uducb5v26p" path="res://Sprites/support.png" id="6_c7bke"]
+[ext_resource type="Script" uid="uid://7n61m2xnx2ee" path="res://Scenes/SupportIcon.gd" id="7_k4eo3"]
 [ext_resource type="PackedScene" uid="uid://d1fat6bedgrnf" path="res://Scenes/pause_menu.tscn" id="8_yop0g"]
 [ext_resource type="PackedScene" uid="uid://cl48slfx2dgx4" path="res://Scenes/end_menu.tscn" id="9_pri1a"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c7bke"]
+load_path = "res://.godot/imported/support.png-85774acc6283deb6bc5e997edb9c90c4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4gn2"]
+atlas = SubResource("CompressedTexture2D_c7bke")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4eo3"]
+atlas = ExtResource("6_c7bke")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7bke"]
+atlas = SubResource("CompressedTexture2D_c7bke")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i00fv"]
+atlas = ExtResource("6_c7bke")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_335po"]
+atlas = SubResource("CompressedTexture2D_c7bke")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r764u"]
+atlas = ExtResource("6_c7bke")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjgi8"]
+atlas = SubResource("CompressedTexture2D_c7bke")
+region = Rect2(100, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l30ei"]
+atlas = ExtResource("6_c7bke")
+region = Rect2(0, 300, 100, 100)
 
 [node name="CanvasLayer" type="CanvasLayer" groups=["EnemyDeath"]]
 script = ExtResource("1_b4cfn")
@@ -32,16 +69,20 @@ theme_override_constants/margin_bottom = 30
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 13
 
 [node name="HP Container" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HP Container"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.11764706, 0.38431373, 0.92156863, 1)
 theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/font_size = 28
 text = "HP"
 
@@ -53,15 +94,20 @@ texture_progress = ExtResource("3_k5w2u")
 
 [node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/HP Container"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.11764706, 0.38431373, 0.92156863, 1)
 theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/font_size = 28
 text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TP Container" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/TP Container"]
@@ -89,9 +135,108 @@ text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LunaProgressBar" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+fill_mode = 4
+texture_under = SubResource("AtlasTexture_u4gn2")
+texture_progress = SubResource("AtlasTexture_k4eo3")
+script = ExtResource("7_k4eo3")
+keyboardText = "1"
+controllerText = "X"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/LunaProgressBar"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.11764706, 0.38431373, 0.92156863, 1)
+theme_override_constants/outline_size = 8
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="WatameProgressBar" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+fill_mode = 4
+texture_under = SubResource("AtlasTexture_c7bke")
+texture_progress = SubResource("AtlasTexture_i00fv")
+script = ExtResource("7_k4eo3")
+keyboardText = "2"
+controllerText = "Y"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/WatameProgressBar"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.11764706, 0.38431373, 0.92156863, 1)
+theme_override_constants/outline_size = 8
+text = "2"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TowaProgressBar" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+fill_mode = 4
+texture_under = SubResource("AtlasTexture_335po")
+texture_progress = SubResource("AtlasTexture_r764u")
+script = ExtResource("7_k4eo3")
+keyboardText = "3"
+controllerText = "A"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/TowaProgressBar"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.11764706, 0.38431373, 0.92156863, 1)
+theme_override_constants/outline_size = 8
+text = "3"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="CocoProgressBar" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+fill_mode = 4
+texture_under = SubResource("AtlasTexture_bjgi8")
+texture_progress = SubResource("AtlasTexture_l30ei")
+script = ExtResource("7_k4eo3")
+keyboardText = "4"
+controllerText = "B"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/CocoProgressBar"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.11764706, 0.38431373, 0.92156863, 1)
+theme_override_constants/outline_size = 8
+text = "4"
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="LevelTimer" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.11764706, 0.38431373, 0.92156863, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 7
 theme_override_font_sizes/font_size = 50
 text = "00:00"
 vertical_alignment = 2
